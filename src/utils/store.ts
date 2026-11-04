@@ -15,6 +15,17 @@ export async function putLocal(key: string, value: unknown) {
     new CustomEvent("kyoto-storage", { detail: { key, value } }),
   );
 }
+export async function putLocals(values: Record<string, unknown>) {
+  const tx = (await db()).transaction("local", "readwrite");
+  await Promise.all(
+    Object.entries(values).map(([key, value]) => tx.store.put(value, key)),
+  );
+  await tx.done;
+  for (const [key, value] of Object.entries(values))
+    window.dispatchEvent(
+      new CustomEvent("kyoto-storage", { detail: { key, value } }),
+    );
+}
 export function useLocal<T>(
   key: string,
   initial: T,

@@ -33,6 +33,7 @@ export interface Event {
   fixed?: boolean;
   restaurant?: string;
   done?: boolean;
+  meal?: boolean;
 }
 export interface Day {
   id: number;

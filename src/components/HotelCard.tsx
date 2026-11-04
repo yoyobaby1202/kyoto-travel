@@ -1,11 +1,10 @@
 import { BedDouble, Phone, Check, Footprints } from "lucide-react";
 import { hotel } from "../data/places";
 import { MapLink } from "./Common";
-import { Illustration } from "./Illustration";
+
 export function HotelCard() {
   return (
     <article className="hotel-card">
-      <Illustration kind="town" />
       <div className="card-body">
         <span className="eyebrow">
           <BedDouble size={14} /> OUR LITTLE HOME IN KYOTO
@@ -55,7 +54,6 @@ export function HotelCard() {
         >
           飯店官方資訊 ↗
         </a>
-        <p className="small muted">原創街屋示意插畫 · 非飯店實拍</p>
       </div>
     </article>
   );

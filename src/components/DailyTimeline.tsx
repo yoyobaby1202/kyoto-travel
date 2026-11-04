@@ -1,207 +1,132 @@
-import { useState } from "react";
-import {
-  Clock3,
-  ChevronDown,
-  ArrowUp,
-  ArrowDown,
-  Pencil,
-  LockKeyhole,
-  Check,
-} from "lucide-react";
+import { ChevronDown, Check } from "lucide-react";
 import type { Day, Event } from "../types";
-import { findPlace, restaurants } from "../data/places";
+import { findPlace } from "../data/places";
 import { routes } from "../data/transport";
-import { minutes, tokyoNow } from "../utils/time";
-import { MapLink, StatusBadge, TransportBadge, modeIcons } from "./Common";
+import { tokyoNow } from "../utils/time";
+import { displayTime } from "../utils/displayTime";
+import { MapLink, StatusBadge, TransportBadge } from "./Common";
 import { TrainRouteCard } from "./TrainRouteCard";
-import { RestaurantCard } from "./RestaurantCard";
-import { Illustration } from "./Illustration";
+import { MealCard } from "./MealCard";
 export function DailyTimeline({
   day,
-  events,
-  onChange,
+  completed,
+  onComplete,
   ready,
 }: {
   day: Day;
-  events: Event[];
-  onChange: (events: Event[]) => void;
+  completed: Record<string, boolean>;
+  onComplete: (id: string) => void;
   ready: boolean;
 }) {
-  const [edit, setEdit] = useState<string>();
-  const [error, setError] = useState("");
   const now = tokyoNow();
-  const t = now.slice(11, 16);
-  function move(i: number, delta: number) {
-    const n = [...events];
-    [n[i], n[i + delta]] = [n[i + delta], n[i]];
-    onChange(n);
-  }
   return (
-    <div className="timeline">
-      {error && (
-        <p role="alert" className="warning">
-          {error}
-        </p>
-      )}
-      {events.map((event, i) => {
+    <div className="md-timeline">
+      {day.events.map((event: Event) => {
         const p = findPlace(event.place);
         const route = routes.find((r) => r.id === event.route);
-        const restaurant = restaurants.find((r) => r.id === event.restaurant);
-        const Icon = modeIcons[event.mode];
+        const clock = displayTime(event);
+        const transport = ["train", "walk", "bus", "boat", "flight"].includes(
+          event.mode,
+        );
         const active =
-          now.slice(0, 10) === day.date && t >= event.start && t < event.end;
+          now.slice(0, 10) === day.date &&
+          now.slice(11, 16) >= event.start &&
+          now.slice(11, 16) < event.end;
+        const done = completed[event.id];
         return (
           <article
-            className={`timeline-item ${active ? "is-current" : ""} ${event.done ? "is-done" : ""}`}
+            className={`md-item ${transport ? "transport-row" : ""} ${active ? "is-current" : ""} ${done ? "is-done" : ""}`}
             key={event.id}
           >
-            <div className="timeline-time">
-              <strong>{event.start}</strong>
-              <small>{event.end}</small>
+            <div className="md-hour">
+              <strong>{clock.start}</strong>
+              {clock.startZone === "台灣" && <small>台灣</small>}
+              <small>
+                {clock.end}
+                {clock.endZone === "台灣" ? " 台灣" : ""}
+              </small>
             </div>
-            <div className={`timeline-dot ${event.mode}`}>
-              <Icon size={17} />
-            </div>
-            <div className="timeline-card">
-              {active && <div className="current-ribbon">現在進行中</div>}
-              <div className="timeline-main">
-                <div className="timeline-copy">
-                  <div className="event-tags">
-                    <TransportBadge mode={event.mode} />
-                    <StatusBadge status={event.status} />
-                    {event.fixed && (
-                      <span className="small fixed">
-                        <LockKeyhole size={11} />
-                        班次保留
-                      </span>
-                    )}
-                  </div>
+            <span
+              className={`md-node ${transport ? "" : "filled"}`}
+              aria-hidden="true"
+            />
+            <div className={transport ? "md-transport" : "md-stop"}>
+              {active && <span className="current-ribbon">現在進行中</span>}
+              {transport ? (
+                <div className="md-transport-title">
+                  <TransportBadge mode={event.mode} />
                   <h3>{event.title}</h3>
-                  <span className="duration">
-                    <Clock3 size={12} /> {event.start}–{event.end} ·{" "}
-                    {minutes(event.end) - minutes(event.start)}分鐘
-                  </span>
-                  {event.note && <p className="event-note">{event.note}</p>}
-                  <MapLink
-                    query={p?.query}
-                    mode={
-                      ["train", "bus"].includes(event.mode)
-                        ? "transit"
-                        : "walking"
-                    }
-                  >
-                    {["train", "bus"].includes(event.mode)
-                      ? "導航到目的地"
-                      : "開啟導航"}
-                  </MapLink>
                 </div>
-                {p && event.mode === "visit" && (
-                  <Illustration kind={p.art} className="timeline-thumb" zoom />
-                )}
-              </div>
-              <div className="timeline-actions">
-                <button
-                  disabled={!ready}
-                  aria-label={`${event.done ? "取消完成" : "完成"}${event.title}`}
-                  className={`complete-button ${event.done ? "checked" : ""}`}
-                  onClick={() =>
-                    onChange(
-                      events.map((e) =>
-                        e.id === event.id ? { ...e, done: !e.done } : e,
-                      ),
-                    )
-                  }
-                >
-                  <Check size={13} />
-                  {event.done ? "已完成" : "完成行程"}
-                </button>
-                <div>
-                  <button
-                    disabled={!ready || event.fixed}
-                    title={event.fixed ? "固定班次不可自動更動" : "編輯時間"}
-                    onClick={() =>
-                      setEdit(edit === event.id ? undefined : event.id)
-                    }
-                    aria-label={`編輯${event.title}時間`}
-                  >
-                    <Pencil size={14} />
-                  </button>
-                  <button
-                    disabled={!ready || i === 0}
-                    onClick={() => move(i, -1)}
-                    aria-label={`上移${event.title}`}
-                  >
-                    <ArrowUp size={14} />
-                  </button>
-                  <button
-                    disabled={!ready || i === events.length - 1}
-                    onClick={() => move(i, 1)}
-                    aria-label={`下移${event.title}`}
-                  >
-                    <ArrowDown size={14} />
-                  </button>
+              ) : (
+                <div className="stop-heading">
+                  <h3>{event.title}</h3>
+                  <StatusBadge status={event.status} />
                 </div>
-              </div>
-              {edit === event.id && (
-                <form
-                  className="time-editor"
-                  onSubmit={(ev) => {
-                    ev.preventDefault();
-                    const form = new FormData(ev.currentTarget);
-                    const start = String(form.get("start")),
-                      end = String(form.get("end"));
-                    if (minutes(end) <= minutes(start)) {
-                      setError("結束時間必須晚於開始時間");
-                      return;
-                    }
-                    onChange(
-                      events.map((e) =>
-                        e.id === event.id ? { ...e, start, end } : e,
-                      ),
-                    );
-                    setEdit(undefined);
-                    setError("");
-                  }}
-                >
-                  <label>
-                    開始
-                    <input
-                      name="start"
-                      type="time"
-                      required
-                      defaultValue={event.start}
-                    />
-                  </label>
-                  <label>
-                    結束
-                    <input
-                      name="end"
-                      type="time"
-                      required
-                      defaultValue={event.end}
-                    />
-                  </label>
-                  <button className="primary" type="submit">
-                    儲存
-                  </button>
-                </form>
               )}
-              {(route || restaurant) && (
+              <p className="event-time">
+                {clock.start}
+                {clock.startZone ? `（${clock.startZone}）` : ""}–{clock.end}
+                {clock.endZone ? `（${clock.endZone}）` : ""}
+                {transport ? ` · ${event.status}` : ""}
+              </p>
+              {event.note && <p>{event.note}</p>}
+              {event.meal ? (
+                <MealCard
+                  slotId={event.id}
+                  preset={
+                    event.restaurant === "lemon" || event.restaurant === "hiro"
+                      ? event.restaurant
+                      : undefined
+                  }
+                />
+              ) : (
+                <div className="md-stop-actions">
+                  {p?.query && (
+                    <MapLink
+                      query={p.query}
+                      mode={
+                        event.mode === "train" || event.mode === "bus"
+                          ? "transit"
+                          : "walking"
+                      }
+                    >
+                      導航
+                    </MapLink>
+                  )}
+                  {!p?.query && event.id === "1-8" && (
+                    <span className="small muted">
+                      選定晚餐分店後再安排交通。
+                    </span>
+                  )}
+                </div>
+              )}
+              {event.id === "3-5" && (
+                <div className="flex-meal">
+                  <h4>團體自由時間・午餐</h4>
+                  <MealCard slotId="3-lunch" />
+                </div>
+              )}
+              {route && (
                 <details className="event-details">
                   <summary>
-                    {route
-                      ? "電車方向・停靠站・交通指南"
-                      : "餐廳資訊・營業時間・備選"}
-                    <ChevronDown size={14} />
+                    方向・站數・搭車小抄
+                    <ChevronDown size={13} />
                   </summary>
-                  {route && (
-                    <TrainRouteCard
-                      route={route}
-                      reverse={event.id === "2-13"}
-                    />
-                  )}
-                  {restaurant && <RestaurantCard restaurant={restaurant} />}
+                  <TrainRouteCard route={route} reverse={event.id === "2-13"} />
                 </details>
+              )}
+              {!transport && (
+                <button
+                  className={`complete-button ${done ? "checked" : ""}`}
+                  disabled={!ready}
+                  aria-label={`${done ? "取消完成" : "完成"}${event.title}`}
+                  onClick={() => onComplete(event.id)}
+                >
+                  <span className="check-square">
+                    {done && <Check size={11} />}
+                  </span>
+                  {done ? "已完成" : "完成這一站"}
+                </button>
               )}
             </div>
           </article>

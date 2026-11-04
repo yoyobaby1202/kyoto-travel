@@ -9,7 +9,12 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "prompt",
-      includeAssets: ["illustrations/*.svg", "icons/*.svg", "icons/*.png"],
+      includeAssets: [
+        "illustrations/*.svg",
+        "icons/*.svg",
+        "icons/*.png",
+        "fonts/*.woff2",
+      ],
       manifest: {
         name: "ふたりの京都旅日記",
         short_name: "京都旅日記",
@@ -18,8 +23,8 @@ export default defineConfig({
         start_url: "/kyoto-travel/",
         scope: "/kyoto-travel/",
         display: "standalone",
-        background_color: "#FAF7F0",
-        theme_color: "#FAF7F0",
+        background_color: "#FFFCF6",
+        theme_color: "#FFFCF6",
         icons: [
           { src: "icons/icon-192.png", sizes: "192x192", type: "image/png" },
           {

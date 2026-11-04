@@ -83,9 +83,13 @@ npm run preview
 - [モリタ屋 木屋町店官方](https://moritaya-kyoto.co.jp/restaurant/kiyamachi/)：晚餐17:00–22:00，最終入店20:45，料理L.O.21:00；另收10%服務費，建議訂位。
 - 丹後海鮮、京都站日式料理皆為未選定店家的候選，無精確店址時不提供導航。
 
-## GitHub Pages部署（目前尚未發布）
+## GitHub Pages部署（已上線）
 
-Repository 已建立：https://github.com/yoyobaby1202/kyoto-travel 。目前正在設定首次GitHub Pages部署，尚未確認上線。公開內容為固定行程及網站原始碼；IndexedDB私人資料、備份與本機測試截圖不會上傳。
+正式網站：https://yoyobaby1202.github.io/kyoto-travel/
+
+Repository：https://github.com/yoyobaby1202/kyoto-travel
+
+首次GitHub Actions建置、測試與Pages部署均成功，正式網址已開啟驗證。公開內容為固定行程及網站原始碼；IndexedDB私人資料、備份與本機測試截圖不會上傳。
 
 後續部署與維護：
 
@@ -99,4 +103,4 @@ HashRouter避免深層連結重新整理404，manifest／Service Worker scope都
 
 ## 驗證範圍
 
-自動測試覆蓋日期星期、時間重疊、資料引用、跨時區航班、普通列車站序、Maps參數、固定班次延誤重算、備份驗證。實際iPhone Safari及GitHub Pages部署仍須取得裝置與Repository後驗證，瀏覽器390px預覽不等同Safari實機測試。
+自動測試覆蓋日期星期、時間重疊、資料引用、跨時區航班、普通列車站序、Maps參數、固定班次延誤重算、備份驗證。GitHub Pages部署與正式HTTPS網站已驗證；實際iPhone Safari仍須取得裝置後驗證，瀏覽器390px預覽不等同Safari實機測試。

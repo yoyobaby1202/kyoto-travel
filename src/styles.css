@@ -1860,3 +1860,18 @@ p {
 .meal-setting p {
   overflow-wrap: anywhere;
 }
+.arashiyama-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: Huninn, sans-serif;
+  font-weight: 400;
+}
+.route-image-button > .arashiyama-map {
+  max-height: 76vh;
+  aspect-ratio: 1200/1550;
+}
+.route-zoom-scroll .arashiyama-map {
+  width: 100%;
+  height: auto;
+}

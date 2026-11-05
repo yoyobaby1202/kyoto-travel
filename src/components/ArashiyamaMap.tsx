@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TrainArt } from "./TrainArt";
 /** Day 2 artwork is a schematic of western Kyoto and Kameoka, not a surveyed boundary. */
-export function ArashiyamaMap({ animate = true }: { animate?: boolean }) {
+export function ArashiyamaMap({ animate = false }: { animate?: boolean }) {
   const [reduce] = useState(
     () =>
       typeof window === "undefined" ||
@@ -108,20 +108,6 @@ export function ArashiyamaMap({ animate = true }: { animate?: boolean }) {
       aria-label="嵐山交通圖：嵯峨搭小火車往龜岡，接駁至乘船場，遊船回嵐山，再步行回JR搭車往京都。"
     >
       <defs>
-        <pattern
-          id="map-streets"
-          width="90"
-          height="100"
-          patternUnits="userSpaceOnUse"
-          patternTransform="rotate(12)"
-        >
-          <path
-            d="M0 15H90M20 0V100"
-            fill="none"
-            stroke="#e9ddc5"
-            strokeWidth="3"
-          />
-        </pattern>
         <marker
           id="map-arrow"
           markerWidth="8"
@@ -146,11 +132,6 @@ export function ArashiyamaMap({ animate = true }: { animate?: boolean }) {
         stroke="#d8cbb0"
         strokeWidth="3"
         strokeDasharray="9 9"
-      />
-      <path
-        d="M720 300H1120V1240H720Z"
-        fill="url(#map-streets)"
-        opacity=".65"
       />
       <path
         d="M40 220q100-180 230-30 100-170 230 10 130-160 250 40 130-120 300 30"

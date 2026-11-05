@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ZoomIn, X } from "lucide-react";
+import { JourneyMap } from "../components/JourneyMap";
 import { ArashiyamaMap } from "../components/ArashiyamaMap";
 import { days } from "../data/itinerary";
 import { findPlace } from "../data/places";
@@ -19,7 +20,6 @@ export function Transport() {
         : day === 5
           ? ["haruka-back"]
           : [];
-  const src = `${import.meta.env.BASE_URL}maps/day-${day}.svg`;
   return (
     <>
       <div className="page-title">
@@ -49,16 +49,7 @@ export function Transport() {
           }}
           aria-label={`放大12月${day + 9}日交通圖`}
         >
-          {day === 2 ? (
-            <ArashiyamaMap />
-          ) : (
-            <img
-              src={src}
-              alt={`${selected.title}交通圖，詳細文字與導航請展開下方資訊`}
-              width="1200"
-              height="1550"
-            />
-          )}
+          {day === 2 ? <ArashiyamaMap /> : <JourneyMap key={day} day={day} />}
           <span>
             <ZoomIn size={16} /> 點圖放大查看
           </span>
@@ -156,11 +147,7 @@ export function Transport() {
               {day === 2 ? (
                 <ArashiyamaMap animate={false} />
               ) : (
-                <img
-                  src={src}
-                  alt={`${selected.title}詳細交通圖`}
-                  style={{ width: "100%", maxWidth: "none" }}
-                />
+                <JourneyMap day={day} animate={false} />
               )}
             </div>
           </div>

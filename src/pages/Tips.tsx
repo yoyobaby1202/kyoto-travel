@@ -72,10 +72,7 @@ export function Tips() {
           <Utensils size={17} />
           想吃的，慢慢選
         </h3>
-        <p>
-          保留候選：檸檬牛舌（12/13）與弘燒肉
-          京都站前店（12/11）皆預計前往，尚未確認訂位。 Maps。
-        </p>
+        <p>保留候選：檸檬牛舌（12/13）與弘燒肉 京都站前店（12/11）用餐安排。</p>
       </section>
       <section className="paper-card">
         <h3>

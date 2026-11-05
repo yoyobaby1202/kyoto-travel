@@ -3,7 +3,7 @@ import { selectedTripDay } from "../utils/selectedTripDay";
 import { useState } from "react";
 import { ZoomIn, X } from "lucide-react";
 import { TrainDayPicker } from "../components/TrainDayPicker";
-import { JourneyMap } from "../components/JourneyMap";
+import { IllustratedJourneyMap } from "../components/IllustratedJourneyMap";
 import { ArashiyamaMap } from "../components/ArashiyamaMap";
 import { days } from "../data/itinerary";
 import { geographySources } from "../data/geography";
@@ -45,7 +45,11 @@ export function Transport() {
           }}
           aria-label={`放大12月${day + 9}日交通圖`}
         >
-          {day === 2 ? <ArashiyamaMap /> : <JourneyMap key={day} day={day} />}
+          {day === 2 ? (
+            <ArashiyamaMap />
+          ) : (
+            <IllustratedJourneyMap key={day} day={day} />
+          )}
           <span>
             <ZoomIn size={16} /> 點圖放大查看
           </span>
@@ -59,7 +63,7 @@ export function Transport() {
         {day === 2 && (
           <p className="note">
             小火車龜岡站 →
-            保津川遊船乘船場須搭39系統接駁巴士。10:35現行班次需再核對12/11適用情況；車程、票價與冬季船班待確認。停駛時巴士可能全停。
+            保津川遊船乘船場，搭乘39系統接駁巴士，10:35出發。乘車位置及運行資訊請見官方接駁說明。
             <a
               href="https://www.keihankyotokotsu.jp/bustimetable/timetable.php?no=1&stop_cd=2050"
               target="_blank"
@@ -126,7 +130,7 @@ export function Transport() {
         ))}
       </details>
       <p className="local-notice">
-        查核日期2026/11/05。此頁沒有即時到站資訊；HARUKA、冬季遊船及接駁班次仍待確認。離線可看示意圖，外部導航需要網路。
+        離線可查看交通圖與景點資訊，Google Maps導航及官方網站需要網路。
       </p>
       {zoom && (
         <div
@@ -161,7 +165,7 @@ export function Transport() {
               {day === 2 ? (
                 <ArashiyamaMap animate={false} />
               ) : (
-                <JourneyMap day={day} animate={false} />
+                <IllustratedJourneyMap day={day} animate={false} />
               )}
             </div>
           </div>

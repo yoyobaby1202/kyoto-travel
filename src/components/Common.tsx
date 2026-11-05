@@ -35,7 +35,7 @@ export function MapLink({
       <ArrowUpRight size={13} />
     </a>
   ) : (
-    <span className="muted small">地點待確認，暫不導航</span>
+    <span className="muted small">設定地點後開啟導航</span>
   );
 }
 export const modeIcons = {
@@ -68,6 +68,7 @@ export function TransportBadge({ mode }: { mode: Mode }) {
   );
 }
 export function StatusBadge({ status }: { status: Status }) {
+  if (status !== "已確認") return null;
   return (
     <span
       className={`status ${status === "已確認" ? "confirmed" : status === "待確認" ? "pending" : ""}`}

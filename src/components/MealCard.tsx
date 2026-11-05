@@ -59,7 +59,9 @@ export function MealCard({
       {name && (
         <div className="meal-name">
           <strong>{name}</strong>
-          <span>{current?.status || "預計用餐・尚未確認訂位"}</span>
+          {current && ["已訂位", "已完成用餐"].includes(current.status) && (
+            <span>{current.status}</span>
+          )}
         </div>
       )}
       {display?.address && <p>{display.address}</p>}
@@ -161,7 +163,13 @@ export function MealCard({
             訂位狀態
             <select name="status" defaultValue={current?.status || "預計前往"}>
               {["尚未決定", "預計前往", "已訂位", "已完成用餐"].map((s) => (
-                <option key={s}>{s}</option>
+                <option key={s} value={s}>
+                  {s === "尚未決定"
+                    ? "自訂餐廳"
+                    : s === "預計前往"
+                      ? "用餐安排"
+                      : s}
+                </option>
               ))}
             </select>
           </label>

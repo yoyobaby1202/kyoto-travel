@@ -1,4 +1,5 @@
 import { TrainFront, ExternalLink, Footprints } from "lucide-react";
+import { travelCopy } from "../utils/travelCopy";
 import type { Route } from "../types";
 import { MapLink } from "./Common";
 export function TrainRouteCard({
@@ -21,21 +22,21 @@ export function TrainRouteCard({
         <div>
           <span className="eyebrow">TRAIN GUIDE</span>
           <h3>
-            {route.name}
+            {travelCopy(route.name)}
             {reverse ? "・回程" : ""}
           </h3>
         </div>
       </header>
       <p className="route-direction">
-        {reverse ? "往京都方向，請搭普通列車" : route.direction}
+        {reverse ? "往京都方向，請搭普通列車" : travelCopy(route.direction)}
       </p>
-      <p className="small">{route.duration}</p>
+      <p className="small">{travelCopy(route.duration)}</p>
       <details open>
         <summary>
           查看路線圖{" "}
           {route.confirmedStops
             ? `· ${stations.length - 1}個站間區間／中途${stations.length - 2}站`
-            : "· 中途停靠待確認"}
+            : "· 起訖站"}
         </summary>
         <div className="station-diagram">
           <svg
@@ -90,11 +91,11 @@ export function TrainRouteCard({
               />
             </svg>
             <Footprints size={15} />
-            {route.walk}
+            {travelCopy(route.walk)}
           </p>
         )}
       </details>
-      <p className="note">{route.note}</p>
+      <p className="note">{travelCopy(route.note)}</p>
       <div className="button-row">
         <MapLink query={reverse ? route.to : route.from}>導航到上車站</MapLink>
         <MapLink

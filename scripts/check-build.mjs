@@ -28,3 +28,5 @@ for (let day = 1; day <= 5; day++) {
 for (const name of ["background", "train", "boat"]) {
   assert.ok(sw.includes(`illustrations/arashiyama/${name}.webp`), `嵐山${name}圖層未離線快取`);
 }
+for(const day of [1,3,4,5])assert.ok(sw.includes(`illustrations/journey/day-${day}.webp`),`Day${day}插畫未快取`);
+assert.ok(sw.includes('illustrations/journey/plane.webp'));

@@ -1,4 +1,5 @@
 import { ChevronDown, Check } from "lucide-react";
+import { travelCopy } from "../utils/travelCopy";
 import type { Day, Event } from "../types";
 import { findPlace } from "../data/places";
 import { routes } from "../data/transport";
@@ -69,9 +70,10 @@ export function DailyTimeline({
                 {clock.start}
                 {clock.startZone ? `（${clock.startZone}）` : ""}–{clock.end}
                 {clock.endZone ? `（${clock.endZone}）` : ""}
-                {transport ? ` · ${event.status}` : ""}
               </p>
-              {event.note && <p>{event.note}</p>}
+              {event.note && travelCopy(event.note) && (
+                <p>{travelCopy(event.note)}</p>
+              )}
               {event.meal ? (
                 <MealCard
                   slotId={event.id}

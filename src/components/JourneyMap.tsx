@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { TrainArt } from "./TrainArt";
 import { PlaneArt } from "./PlaneArt";
 import { FlightGeography } from "./FlightGeography";
 import { journeyMaps } from "../data/journeyMaps";
-function Landmark({ art }: { art: string }) {
+export function Landmark({ art }: { art: string }) {
   return (
     <g
       stroke="#493c35"
@@ -10,7 +11,30 @@ function Landmark({ art }: { art: string }) {
       strokeLinejoin="round"
       strokeLinecap="round"
     >
-      {art === "torii" ? (
+      {art === "bamboo" ? (
+        <>
+          <path
+            d="M-34 24V-50M-8 24V-64m26 88V-48"
+            stroke="#748e62"
+            strokeWidth="7"
+          />
+          <path
+            d="m-34-20-22-13m48-5 21-16m5 32 22-13"
+            stroke="#748e62"
+            fill="none"
+          />
+          <path
+            d="M32 24v-40m26 40v-40M25-23h40v10H25Zm3 24h34"
+            fill="#cf8b73"
+          />
+        </>
+      ) : art === "pin" ? (
+        <circle r="7" fill="#bd624d" />
+      ) : art === "train" ? (
+        <g transform="scale(-1 1)">
+          <TrainArt x={-65} y={-45} width={130} height={69} />
+        </g>
+      ) : art === "torii" ? (
         <>
           <path
             d="M-36 20v-66m72 66v-66M-50-58q50 10 100 0v16H-50Zm10 40h80"
@@ -108,6 +132,7 @@ export function JourneyMap({
     walk: "#a38c71",
     bus: "#aa85ad",
     flight: "#b97b63",
+    boat: "#86afbb",
   };
   const lines = (
     x: number,
@@ -150,30 +175,35 @@ export function JourneyMap({
     >
       <rect width="1200" height="1550" rx="26" fill="#fffcf6" />
       {data.flight ? (
-        <FlightGeography day={day} />
+        <FlightGeography />
       ) : (
         <>
-          <path
-            d="M80 175 240 110 390 145 510 90 650 150 820 125 1080 230 1130 440 1090 650 1140 880 1070 1185 830 1280 660 1200 460 1290 220 1200 100 960 140 740 55 470Z"
-            fill={day === 3 ? "#edf0e5" : "#f5efdf"}
-            stroke="#d8cbb0"
-            strokeWidth="3"
-            strokeDasharray="8 10"
+          <rect
+            x="50"
+            y="120"
+            width="1100"
+            height="1180"
+            rx="40"
+            fill="#f5efdf"
+            stroke="#e4d7c2"
+            strokeWidth="2"
           />
           {day === 3 ? (
             <>
               <path
-                d="M50 170Q260 20 530 180T1150 200"
-                stroke="#d2e8e7"
-                strokeWidth="65"
-                fill="none"
+                d="M650 450Q780 400 1150 440V760Q750 730 650 450Z"
+                fill="#dfeded"
               />
               <path
-                d="M50 170Q260 20 530 180T1150 200"
-                stroke="#9fc6cb"
-                strokeWidth="8"
-                fill="none"
+                d="M380 610Q650 580 730 840L520 960Q500 760 380 610Z"
+                fill="#dfeded"
               />
+              <text x="900" y="620" fontSize="25" fill="#86afbb">
+                伊根灣
+              </text>
+              <text x="620" y="860" fontSize="25" fill="#86afbb">
+                宮津灣
+              </text>
             </>
           ) : (
             <>
@@ -183,13 +213,14 @@ export function JourneyMap({
                 stroke="#bfcca3"
                 strokeWidth="4"
               />
-              <path
-                d="M730 140Q570 600 690 1230"
-                stroke="#d6e7e5"
-                strokeWidth="16"
-                fill="none"
-                opacity=".7"
-              />
+              {day === 4 && (
+                <path
+                  d="M560 120Q540 700 570 1300"
+                  stroke="#d6e7e5"
+                  strokeWidth="14"
+                  fill="none"
+                />
+              )}
             </>
           )}
         </>
@@ -206,7 +237,7 @@ export function JourneyMap({
             d={leg.path}
             fill="none"
             stroke={color[leg.kind]}
-            strokeWidth={leg.kind === "walk" ? 5 : 7}
+            strokeWidth={leg.kind === "boat" ? 18 : leg.kind === "walk" ? 5 : 7}
             strokeDasharray={
               leg.kind === "walk"
                 ? "4 12"
@@ -234,7 +265,13 @@ export function JourneyMap({
         </g>
       ))}
       {data.stops.map((stop, i) => {
-        const width = Math.max(185, [...stop.name].length * 25 + 50);
+        const width = Math.max(
+          185,
+          [...stop.name].reduce(
+            (w, c) => w + (/[A-Za-z /]/.test(c) ? 13 : 25),
+            0,
+          ) + 50,
+        );
         return (
           <g
             key={stop.name}
@@ -242,46 +279,63 @@ export function JourneyMap({
             transform={`translate(${stop.x} ${stop.y})`}
           >
             <Landmark art={stop.art} />
-            <rect
-              x={-width / 2}
-              y="42"
-              width={width}
-              height="45"
-              rx="16"
-              fill="#fffcf6"
-              stroke="#c3ad92"
-              strokeWidth="1.6"
-            />
-            <circle
-              cx={-width / 2 + 21}
-              cy="64"
-              r="13"
-              fill={day === 3 ? "#d7e8e8" : "#f0d2b3"}
-              stroke="#8b755e"
-            />
-            <text x={-width / 2 + 21} y="70" textAnchor="middle" fontSize="18">
-              {i + 1}
-            </text>
-            <text
-              x="15"
-              y="72"
-              textAnchor="middle"
-              fontSize="25"
-              fill="#493c35"
+            {(stop.labelDx || stop.labelDy) && (
+              <path
+                d={`M0 25L${stop.labelDx || 0} ${42 + (stop.labelDy || 0)}`}
+                fill="none"
+                stroke="#c3ad92"
+                strokeWidth="1.7"
+              />
+            )}
+            <g
+              transform={`translate(${stop.labelDx || 0} ${stop.labelDy || 0})`}
             >
-              {stop.name}
-            </text>
-            <text
-              y="116"
-              textAnchor="middle"
-              fontSize="22"
-              fill="#9c876b"
-              paintOrder="stroke"
-              stroke="#fffcf6"
-              strokeWidth="5"
-            >
-              {stop.note}
-            </text>
+              <rect
+                x={-width / 2}
+                y="42"
+                width={width}
+                height="45"
+                rx="16"
+                fill="#fffcf6"
+                stroke="#c3ad92"
+                strokeWidth="1.6"
+              />
+              <circle
+                cx={-width / 2 + 21}
+                cy="64"
+                r="13"
+                fill={day === 3 ? "#d7e8e8" : "#f0d2b3"}
+                stroke="#8b755e"
+              />
+              <text
+                x={-width / 2 + 21}
+                y="70"
+                textAnchor="middle"
+                fontSize="18"
+              >
+                {i + 1}
+              </text>
+              <text
+                x="15"
+                y="72"
+                textAnchor="middle"
+                fontSize="25"
+                fill="#493c35"
+              >
+                {stop.name}
+              </text>
+              <text
+                y="116"
+                textAnchor="middle"
+                fontSize="22"
+                fill="#9c876b"
+                paintOrder="stroke"
+                stroke="#fffcf6"
+                strokeWidth="5"
+              >
+                {stop.note}
+              </text>
+            </g>
           </g>
         );
       })}
@@ -297,14 +351,19 @@ export function JourneyMap({
           fill={i % 2 ? "#e1b16b" : "#cf8863"}
         />
       ))}
+      {day === 2 && (
+        <g transform="translate(683 748)">
+          <Landmark art="boat" />
+        </g>
+      )}
       {data.flight && (
         <g
           transform={
             animate && !reduce
               ? undefined
               : day === 1
-                ? "translate(440 510)"
-                : "translate(250 1160)"
+                ? "translate(480 960)"
+                : "translate(160 1160)"
           }
         >
           {animate && !reduce && (
@@ -321,7 +380,7 @@ export function JourneyMap({
               animate && !reduce
                 ? "rotate(0)"
                 : day === 1
-                  ? "rotate(25)"
+                  ? "rotate(-25)"
                   : "rotate(155)"
             }
           >

@@ -106,3 +106,7 @@ HashRouter避免深層連結重新整理404，manifest／Service Worker scope都
 - 修改地圖後執行 `node scripts/subset-font.mjs`、`npx tsx scripts/generate-transport-maps.tsx` 再建置。
 - 原創行程小插畫使用 EventArtwork；嵐山小火車繼續共用 TrainArt。
 - 河原町回程站序來源：[阪急京都線](https://www.hankyu.co.jp/station/kyoto/index.html)、[京都市地下鐵烏丸線](https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/line02.htm)。
+
+
+### 日期與方位修正
+行程與交通共用 URL 的 day 參數，未指定或無效時預設 Day 1；跨頁保留選取日期。地標方向依官方位置頁及 OpenStreetMap 位置核對，約略座標與來源記錄於 src/data/geography.ts。交通圖北朝上並採分區縮尺，圖示錨點符合東西南北排序，文字避讓時以細線連回；不代表等比例道路或實際海岸。台灣在關西西南方，關西機場在京都西南方，飯店在京都站西北側。

@@ -20,6 +20,7 @@ import { Transport } from "./pages/Transport";
 import { Tips } from "./pages/Tips";
 import { JourneyHero } from "./components/JourneyHero";
 import { PwaStatus } from "./components/PwaStatus";
+import { selectedTripDay } from "./utils/selectedTripDay";
 import { tokyoNow } from "./utils/time";
 const nav = [
   { to: "/", label: "行程", icon: CalendarDays },
@@ -27,7 +28,8 @@ const nav = [
   { to: "/tips", label: "小叮嚀", icon: NotebookTabs },
 ];
 function Shell() {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
+  const selectedDay = selectedTripDay(search);
   const trip = pathname === "/" || pathname === "/itinerary";
   const [online, setOnline] = useState(navigator.onLine);
   const [now, setNow] = useState(tokyoNow());
@@ -43,12 +45,14 @@ function Shell() {
       clearInterval(timer);
     };
   }, []);
-  useEffect(() => { window.scrollTo({ top: 0 }); }, [pathname]);
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [pathname]);
   return (
     <div id="maple-app">
       <div className="md-shell">
         <header className="md-top">
-          <NavLink to="/">
+          <NavLink to={`/?day=${selectedDay}`}>
             <Leaf size={14} />
             ふたりの京都旅日記
           </NavLink>
@@ -58,7 +62,7 @@ function Shell() {
         <nav className="md-nav" aria-label="主要頁籤">
           {nav.map(({ to, label, icon: Icon }) => (
             <NavLink
-              to={to}
+              to={`${to}?day=${selectedDay}`}
               key={to}
               end={to === "/"}
               className={({ isActive }) =>

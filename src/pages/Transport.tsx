@@ -1,15 +1,21 @@
+import { useSearchParams } from "react-router-dom";
+import { selectedTripDay } from "../utils/selectedTripDay";
 import { useState } from "react";
 import { ZoomIn, X } from "lucide-react";
 import { TrainDayPicker } from "../components/TrainDayPicker";
 import { JourneyMap } from "../components/JourneyMap";
 import { ArashiyamaMap } from "../components/ArashiyamaMap";
 import { days } from "../data/itinerary";
+import { geographySources } from "../data/geography";
 import { findPlace } from "../data/places";
 import { routes } from "../data/transport";
 import { TrainRouteCard } from "../components/TrainRouteCard";
 import { MapLink } from "../components/Common";
 export function Transport() {
-  const [day, setDay] = useState(2);
+  const [params, setParams] = useSearchParams();
+  const day = selectedTripDay(params.toString());
+  const setDay = (n: number) =>
+    setParams({ day: String(n) }, { preventScrollReset: true });
   const [zoom, setZoom] = useState(false);
   const [scale, setScale] = useState(1);
   const selected = days[day - 1];
@@ -100,6 +106,24 @@ export function Transport() {
               </span>
             ))}
         </div>
+      </details>
+      <details className="paper-card">
+        <summary>方位與地圖資料來源</summary>
+        <p>
+          各圖均北朝上，依地標位置核對東西南北。跨海、關西與京都採分區縮尺，近距離景點已放大，標籤另作避讓；線條為交通示意，並非實際道路或海岸線。
+        </p>
+        {geographySources.map((s) => (
+          <p key={s.url}>
+            <a
+              className="text-link"
+              href={s.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {s.title} ↗
+            </a>
+          </p>
+        ))}
       </details>
       <p className="local-notice">
         查核日期2026/11/05。此頁沒有即時到站資訊；HARUKA、冬季遊船及接駁班次仍待確認。離線可看示意圖，外部導航需要網路。

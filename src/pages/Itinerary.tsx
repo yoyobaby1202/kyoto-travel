@@ -8,11 +8,11 @@ import { TrainDayPicker } from "../components/TrainDayPicker";
 import { DayArtwork } from "../components/DayArtwork";
 import { MapLink } from "../components/Common";
 import { useLocal } from "../utils/store";
-import { activeDay, download } from "../utils/time";
+import { selectedTripDay } from "../utils/selectedTripDay";
+import { download } from "../utils/time";
 export function Itinerary() {
   const [params, setParams] = useSearchParams();
-  const raw = Number(params.get("day"));
-  const id = Number.isInteger(raw) && raw >= 1 && raw <= 5 ? raw : activeDay();
+  const id = selectedTripDay(params.toString());
   const day = days[id - 1];
   const [completed, save, ready, error] = useLocal<Record<string, boolean>>(
     "completed-stops",

@@ -1,13 +1,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { journeyMaps } from "../data/journeyMaps";
-test("其他四天交通圖具有景點與路線，只有來回飛機設定動畫路徑", () => {
-  assert.deepEqual(Object.keys(journeyMaps), ["1", "3", "4", "5"]);
+test("五天交通圖具有景點與路線，只有來回飛機設定動畫路徑", () => {
+  assert.deepEqual(Object.keys(journeyMaps), ["1", "2", "3", "4", "5"]);
   for (const [day, map] of Object.entries(journeyMaps)) {
-    assert.ok(map.stops.length >= 6);
+    assert.ok(map.stops.length >= 4);
     assert.ok(map.notes.length >= 3);
     for (const stop of map.stops) {
-      assert.ok(stop.x >= 100 && stop.x <= 1000);
+      assert.ok(stop.x >= 100 && stop.x <= 1100);
       assert.ok(stop.y + 116 < 1320);
       assert.ok(stop.art);
     }

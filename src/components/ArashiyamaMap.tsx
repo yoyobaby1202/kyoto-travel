@@ -25,37 +25,62 @@ export function ArashiyamaMap({ animate = true }: { animate?: boolean }) {
       ))}
     </text>
   );
+  // Compact captions sit below the buildings, leaving the scenery and tracks visible.
   const station = (
     x: number,
     y: number,
     name: string,
     n: number,
     color = "#f7e6ca",
-  ) => (
-    <g>
-      <rect
-        x={x}
-        y={y}
-        width="270"
-        height="92"
-        rx="22"
-        fill={color}
-        stroke="#493c35"
-        strokeWidth="3"
-      />
-      <circle cx={x + 20} cy={y + 15} r="22" fill="#493c35" />
-      <text
-        x={x + 20}
-        y={y + 23}
-        textAnchor="middle"
-        fontSize="24"
-        fill="#fffcf6"
-      >
-        {n}
-      </text>
-      {label(x + 38, y + 40, [name], 27)}
-    </g>
-  );
+  ) => {
+    const size = 24;
+    const width = Math.max(
+      210,
+      Array.from(name).reduce(
+        (w, c) => w + (/[A-Za-z /]/.test(c) ? 13 : size),
+        0,
+      ) + 54,
+    );
+    return (
+      <g className="map-station-caption" data-station={n}>
+        <rect
+          x={x}
+          y={y}
+          width={width}
+          height={46}
+          rx={16}
+          fill="#fffcf6"
+          fillOpacity={0.96}
+          stroke="#c3ad92"
+          strokeWidth={1.6}
+        />
+        <path
+          d={`M${x + 17} ${y + 44}H${x + width - 17}`}
+          stroke={color}
+          strokeWidth={4}
+          strokeLinecap="round"
+        />
+        <circle
+          cx={x + 21}
+          cy={y + 23}
+          r={13}
+          fill={color}
+          stroke="#8b755e"
+          strokeWidth={1.2}
+        />
+        <text
+          x={x + 21}
+          y={y + 29}
+          textAnchor="middle"
+          fontSize={18}
+          fill="#493c35"
+        >
+          {n}
+        </text>
+        {label(x + 43, y + 31, [name], size)}
+      </g>
+    );
+  };
   const leaf = (x: number, y: number, color = "#cf8863") => (
     <path
       transform={`translate(${x} ${y})`}
@@ -211,7 +236,7 @@ export function ArashiyamaMap({ animate = true }: { animate?: boolean }) {
       {station(185, 200, "小火車龜岡站", 4, "#f2d8c5")}
       {station(815, 445, "小火車嵯峨站", 3, "#f2d8c5")}
       {station(830, 680, "JR 嵯峨嵐山站", 2, "#e9e2ef")}
-      {station(45, 410, "保津川乘船場", 5, "#e2eeea")}
+      {station(45, 455, "保津川乘船場", 5, "#e2eeea")}
       {label(
         490,
         460,
@@ -274,7 +299,7 @@ export function ArashiyamaMap({ animate = true }: { animate?: boolean }) {
         <ellipse cy="-60" rx="18" ry="8" fill="#cf8b73" />
         <path d="M0-80v-25" />
       </g>
-      {station(825, 1190, "京都站・出發／返回", 1, "#f3dfbb")}
+      {station(825, 1210, "京都站・出發／返回", 1, "#f3dfbb")}
       <rect
         x="800"
         y="840"
@@ -282,8 +307,8 @@ export function ArashiyamaMap({ animate = true }: { animate?: boolean }) {
         height="203"
         rx="22"
         fill="#fffcf6"
-        stroke="#d2c4da"
-        strokeWidth="2"
+        stroke="#ded4e3"
+        strokeWidth="1.5"
       />
       {label(
         820,

@@ -25,3 +25,6 @@ for (let day = 1; day <= 5; day++) {
   assert.ok(fs.existsSync(`dist/maps/day-${day}.svg`));
   assert.ok(sw.includes(`maps/day-${day}.svg`), `Day ${day}交通圖未快取`);
 }
+for (const name of ["background", "train", "boat"]) {
+  assert.ok(sw.includes(`illustrations/arashiyama/${name}.webp`), `嵐山${name}圖層未離線快取`);
+}

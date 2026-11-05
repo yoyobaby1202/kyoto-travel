@@ -1,0 +1,15 @@
+{
+  "width": 1019,
+  "height": 1543,
+  "cropTop": 140,
+  "train": {
+    "width": 700,
+    "height": 175,
+    "hasAlpha": true
+  },
+  "boat": {
+    "width": 700,
+    "height": 287,
+    "hasAlpha": true
+  }
+}

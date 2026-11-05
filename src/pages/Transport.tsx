@@ -11,6 +11,7 @@ import { findPlace } from "../data/places";
 import { routes } from "../data/transport";
 import { TrainRouteCard } from "../components/TrainRouteCard";
 import { MapLink } from "../components/Common";
+import { KyotoBusGuide } from "../components/KyotoBusGuide";
 export function Transport() {
   const [params, setParams] = useSearchParams();
   const day = selectedTripDay(params.toString());
@@ -77,6 +78,9 @@ export function Transport() {
           <p className="note">
             08:45前抵達八條東口，精確集合點依Klook憑證。觀光巴士包含伊根與天橋立之間的移動；景點時間與順序均由旅行團安排。
           </p>
+        )}
+        {day === 4 && (
+          <KyotoBusGuide />
         )}
         {day === 4 && (
           <p className="note">

@@ -1878,3 +1878,14 @@ p {
 .route-image-button > .illustrated-arashiyama {
   aspect-ratio: 1019/1403;
 }
+.kyoto-bus-guide { margin-top: 20px; padding: clamp(14px, 3vw, 24px); background: #fff8eb; border: 2px solid #d4b995; border-radius: 20px; }
+.kyoto-bus-guide h3, .kyoto-bus-guide li strong { display: flex; align-items: center; gap: 8px; }
+.kyoto-bus-guide h3 { margin: 8px 0 20px; }
+.kyoto-bus-guide ol { padding-left: 24px; }
+.kyoto-bus-guide li { padding-left: 4px; margin-bottom: 18px; }
+.kyoto-bus-guide li::marker { color: #a55f42; font-weight: bold; }
+.kyoto-bus-guide p { line-height: 1.8; }
+.kyoto-bus-guide li p { margin: 6px 0; }
+.kyoto-bus-payment { border-top: 1px dashed #d4b995; padding-top: 14px; }
+.kyoto-bus-sources { display: flex; flex-wrap: wrap; gap: 12px 18px; font-size: .85rem; }
+.kyoto-bus-sources a { text-decoration: underline; text-underline-offset: 4px; }

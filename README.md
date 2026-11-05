@@ -98,3 +98,11 @@ HashRouter避免深層連結重新整理404，manifest／Service Worker scope都
 ## 驗證範圍
 
 自動測試覆蓋日期星期、時間重疊、資料引用、跨時區顯示、保留餐廳與通用午晚餐、普通列車站序、Maps參數與分享網址驗證、備份驗證。GitHub Pages部署與正式HTTPS網站已驗證；實際iPhone Safari仍須取得裝置後驗證，瀏覽器390px預覽不等同Safari實機測試。
+
+
+### 2026-11-05 餐廳與交通圖更新
+- 12/10 晚餐待定；12/11 19:00–20:30 弘燒肉 京都駅前店；12/13 18:30–19:30 牛たんの檸檬 京都店。兩家均未確認訂位，本機自訂餐廳仍優先保留。
+- 交通頁五天切換單張 SVG，可放大，所有地圖及內嵌字型納入 PWA 離線快取。
+- 修改地圖後執行 `node scripts/subset-font.mjs`、`npx tsx scripts/generate-transport-maps.tsx` 再建置。
+- 原創行程小插畫使用 EventArtwork；嵐山小火車繼續共用 TrainArt。
+- 河原町回程站序來源：[阪急京都線](https://www.hankyu.co.jp/station/kyoto/index.html)、[京都市地下鐵烏丸線](https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/line02.htm)。

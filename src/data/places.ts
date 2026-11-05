@@ -294,8 +294,15 @@ export const places: Place[] = [
 export const restaurants: Restaurant[] = [
   {
     id: "lemon",
-    name: "檸檬牛舌",
-    ja: "分店未確認",
+    name: "檸檬牛舌 京都店",
+    ja: "牛たんの檸檬 京都店",
+    query: "牛たんの檸檬 京都店 京都市下京区真町90",
+    address:
+      "〒600-8001 京都府京都市下京区四条通河原町西入真町90 吉寿屋四条ビル3階",
+    phone: "075-335-9530",
+    official: "https://www.store-gyutan-lemon.com/",
+    mapsUrl:
+      "https://www.google.com/maps/search/?api=1&query=牛たんの檸檬+京都店",
     description: "期待一頓熱熱的牛舌晚餐。",
     duration: "90分鐘",
     art: "food",
@@ -306,9 +313,15 @@ export const restaurants: Restaurant[] = [
   },
   {
     id: "hiro",
-    name: "弘燒肉",
-    ja: "弘燒肉（分店待確認）",
-    description: "保留為候選餐廳，分店、用餐日與訂位待確認。",
+    name: "弘燒肉 京都站前店",
+    ja: "京の焼肉処 弘 京都駅前店",
+    query: "京の焼肉処 弘 京都駅前店 京都市下京区塩小路町510-1",
+    address: "〒600-8212 京都府京都市下京区塩小路町510-1",
+    phone: "075-343-4129",
+    official: "https://yakiniku-hiro.com/shop/ekimae.php",
+    mapsUrl:
+      "https://www.google.com/maps/search/?api=1&query=京の焼肉処+弘+京都駅前店",
+    description: "12/11預計晚餐，尚未確認訂位。",
     duration: "60–90分鐘",
     art: "food",
     dish: "燒肉",

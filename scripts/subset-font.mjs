@@ -11,7 +11,7 @@ function files(dir) {
           : [],
     );
 }
-const content = files("src")
+const content = [...files("src"), ...files("scripts")]
   .map((p) => fs.readFileSync(p, "utf8"))
   .join("");
 const chars = new Set([

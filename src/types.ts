@@ -13,6 +13,9 @@ export interface Place {
   note?: string;
 }
 export interface Restaurant extends Place {
+  address?: string;
+  phone?: string;
+  mapsUrl?: string;
   dish: string;
   hours: string;
   lastOrder: string;

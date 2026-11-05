@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Plus, Pencil, Navigation, ExternalLink, X } from "lucide-react";
 import { useLocal } from "../utils/store";
+import { restaurants } from "../data/places";
 import { maps } from "../utils/maps";
 import { validateMeal, type MealSetting } from "../utils/meals";
 export function MealCard({
@@ -18,13 +19,20 @@ export function MealCard({
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const current = settings[slotId];
-  const name =
-    current?.name ||
-    (preset === "lemon" ? "檸檬牛舌" : preset === "hiro" ? "弘燒肉" : "");
+  const restaurant = restaurants.find((r) => r.id === preset);
+  const defaults = restaurant
+    ? {
+        name: restaurant.name,
+        address: restaurant.address || "",
+        mapsUrl: restaurant.mapsUrl || "",
+      }
+    : undefined;
+  const display = current || defaults;
+  const name = display?.name || "";
   const url =
-    current?.mapsUrl ||
-    (current?.address
-      ? maps(`${current.name} ${current.address}`, "walking")
+    display?.mapsUrl ||
+    (display?.address
+      ? maps(`${display.name} ${display.address}`, "walking")
       : undefined);
   async function submit(form: HTMLFormElement) {
     const f = new FormData(form);
@@ -51,14 +59,26 @@ export function MealCard({
       {name && (
         <div className="meal-name">
           <strong>{name}</strong>
-          <span>{current?.status || "預計前往"}</span>
+          <span>{current?.status || "預計用餐・尚未確認訂位"}</span>
         </div>
       )}
-      {current?.address && <p>{current.address}</p>}
-      {current?.note && <p>{current.note}</p>}
-      {preset && !current && (
-        <p>候選未訂位 · 分店{preset === "hiro" ? "、日期" : ""}待確認</p>
+      {display?.address && <p>{display.address}</p>}
+      {restaurant && !current && (
+        <>
+          <p>
+            {restaurant.ja} · {restaurant.phone}
+          </p>
+          <a
+            className="text-link"
+            href={restaurant.official}
+            target="_blank"
+            rel="noreferrer"
+          >
+            餐廳官方資訊 ↗
+          </a>
+        </>
       )}
+      {current?.note && <p>{current.note}</p>}
       <div className="button-row">
         {url && (
           <a className="map-link" href={url} target="_blank" rel="noreferrer">
@@ -121,7 +141,7 @@ export function MealCard({
               name="address"
               maxLength={300}
               placeholder="例如：京都市…（請填精確分店地址）"
-              defaultValue={current?.address || ""}
+              defaultValue={display?.address || ""}
             />
           </label>
           <label>
@@ -131,7 +151,7 @@ export function MealCard({
               type="url"
               inputMode="url"
               placeholder="貼上Google Maps分享連結"
-              defaultValue={current?.mapsUrl || ""}
+              defaultValue={display?.mapsUrl || ""}
             />
           </label>
           <p className="small muted">

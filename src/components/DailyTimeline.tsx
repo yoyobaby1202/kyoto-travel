@@ -6,6 +6,7 @@ import { tokyoNow } from "../utils/time";
 import { displayTime } from "../utils/displayTime";
 import { MapLink, StatusBadge, TransportBadge } from "./Common";
 import { TrainRouteCard } from "./TrainRouteCard";
+import { EventArtwork } from "./EventArtwork";
 import { MealCard } from "./MealCard";
 export function DailyTimeline({
   day,
@@ -52,6 +53,7 @@ export function DailyTimeline({
             />
             <div className={transport ? "md-transport" : "md-stop"}>
               {active && <span className="current-ribbon">現在進行中</span>}
+              <EventArtwork event={event} />
               {transport ? (
                 <div className="md-transport-title">
                   <TransportBadge mode={event.mode} />
@@ -81,18 +83,19 @@ export function DailyTimeline({
                 />
               ) : (
                 <div className="md-stop-actions">
-                  {p?.query && (
-                    <MapLink
-                      query={p.query}
-                      mode={
-                        event.mode === "train" || event.mode === "bus"
-                          ? "transit"
-                          : "walking"
-                      }
-                    >
-                      導航
-                    </MapLink>
-                  )}
+                  {p?.query &&
+                    !(event.place === "hotel" && event.mode === "food") && (
+                      <MapLink
+                        query={p.query}
+                        mode={
+                          event.mode === "train" || event.mode === "bus"
+                            ? "transit"
+                            : "walking"
+                        }
+                      >
+                        導航
+                      </MapLink>
+                    )}
                   {!p?.query && event.id === "1-8" && (
                     <span className="small muted">
                       選定晚餐分店後再安排交通。

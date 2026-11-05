@@ -1,84 +1,160 @@
-import { Bus, Ship, Footprints, TrainFront, ArrowDown } from "lucide-react";
+import { useState } from "react";
+import { ZoomIn, X } from "lucide-react";
+import { days } from "../data/itinerary";
+import { findPlace } from "../data/places";
 import { routes } from "../data/transport";
 import { TrainRouteCard } from "../components/TrainRouteCard";
 import { MapLink } from "../components/Common";
 export function Transport() {
+  const [day, setDay] = useState(2);
+  const [zoom, setZoom] = useState(false);
+  const [scale, setScale] = useState(1);
+  const selected = days[day - 1];
+  const ids =
+    day === 1
+      ? ["haruka-out", "nara"]
+      : day === 2
+        ? ["sagano", "torokko"]
+        : day === 5
+          ? ["haruka-back"]
+          : [];
+  const src = `${import.meta.env.BASE_URL}maps/day-${day}.svg`;
   return (
     <>
       <div className="page-title">
-        <span className="eyebrow">A LITTLE TRAIN COMPANION</span>
-        <h1>下一站，京都的風景。</h1>
-        <p>
-          方向、站數與轉乘，一張卡片看懂。這裡是靜態交通指南，沒有即時到站資訊。
-        </p>
+        <span className="eyebrow">OUR LITTLE ROUTE MAP</span>
+        <h1>今天，沿著這條線旅行。</h1>
+        <p>每天一張交通小抄。方位為示意，班次依官方公告與現場看板。</p>
       </div>
-      <section className="transport-flow paper-card">
-        <h3>Day 2 · 一天五種旅行方式</h3>
-        <div>
-          {[
-            [TrainFront, "JR 嵯峨野線"],
-            [TrainFront, "嵯峨野小火車"],
-            [Bus, "紫色接駁巴士"],
-            [Ship, "保津川遊船"],
-            [Footprints, "步行遊嵐山"],
-          ].map(([Icon, label], i) => {
-            const I = Icon as typeof Bus;
-            return (
-              <span key={i} className={i === 2 ? "purple" : ""}>
-                <I size={22} />
-                <strong>{String(label)}</strong>
-                {i < 4 && <ArrowDown size={13} />}
-              </span>
-            );
-          })}
-        </div>
-        <p className="note">
-          小火車龜岡站 →
-          保津川遊船乘船場：需搭接駁巴士。39系統站外乘車，目的地「保津川下り乗船場」。車程、票價及12/11適用班次待確認；小火車或遊船停駛，巴士可能全停。
-        </p>
-        <a
-          className="text-link"
-          href="https://www.keihankyotokotsu.jp/bustimetable/timetable.php?no=1&stop_cd=2050"
-          target="_blank"
-          rel="noreferrer"
-        >
-          官方巴士時刻／接駁說明 ↗
-        </a>{" "}
-        <MapLink query="保津川下り乗船場 亀岡市保津町下中島2">
-          乘船場參考導航
-        </MapLink>
-      </section>
-      <div className="route-grid">
-        {routes.map((r) => (
-          <TrainRouteCard route={r} key={r.id} />
+      <div className="map-day-tabs" aria-label="選擇交通日期">
+        {days.map((d) => (
+          <button
+            key={d.id}
+            aria-pressed={day === d.id}
+            onClick={() => setDay(d.id)}
+          >
+            12/{9 + d.id}
+            <small>{["四", "五", "六", "日", "一"][d.id - 1]}</small>
+          </button>
         ))}
       </div>
-      <section className="paper-card">
-        <h3>東山散策・巴士比繞搭電車更直接</h3>
-        <p>
-          Day 4
-          京都站至清水寺，以市巴士加上坡步行規劃60分鐘。路線、車站及壅塞狀況請當天查核；東山景點之間以步行串連。Day
-          3 使用觀光巴士，不安排一般電車轉乘。
-        </p>
-        <MapLink
-          query="清水寺 京都市東山区清水1丁目294"
-          origin="京都駅"
-          mode="transit"
+      <section className="daily-route-map paper-card">
+        <h2>{selected.title}</h2>
+        <button
+          className="route-image-button"
+          onClick={() => {
+            setScale(1);
+            setZoom(true);
+          }}
+          aria-label={`放大12月${day + 9}日交通圖`}
         >
-          查看當日大眾運輸建議
-        </MapLink>
-        <a
-          className="text-link"
-          href="https://www2.city.kyoto.lg.jp/kotsu/webguide/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          京都市交通局官方指南 ↗
-        </a>
+          <img
+            src={src}
+            alt={`${selected.title}交通圖，詳細文字與導航請展開下方資訊`}
+            width="1200"
+            height="1550"
+          />
+          <span>
+            <ZoomIn size={16} /> 點圖放大查看
+          </span>
+        </button>
       </section>
+      <details className="paper-card">
+        <summary>展開站序、交通提醒與導航</summary>
+        {ids.map((id) => (
+          <TrainRouteCard key={id} route={routes.find((r) => r.id === id)!} />
+        ))}
+        {day === 2 && (
+          <p className="note">
+            小火車龜岡站 →
+            保津川遊船乘船場須搭39系統接駁巴士。10:35現行班次需再核對12/11適用情況；車程、票價與冬季船班待確認。停駛時巴士可能全停。
+            <a
+              href="https://www.keihankyotokotsu.jp/bustimetable/timetable.php?no=1&stop_cd=2050"
+              target="_blank"
+              rel="noreferrer"
+            >
+              官方接駁時刻 ↗
+            </a>
+          </p>
+        )}
+        {day === 3 && (
+          <p className="note">
+            08:45前抵達八條東口，精確集合點依Klook憑證。觀光巴士包含伊根與天橋立之間的移動；景點時間與順序均由旅行團安排。
+          </p>
+        )}
+        {day === 4 && (
+          <p className="note">
+            清水寺去程採市巴士加步行，含候車預留60分鐘。回程阪急京都河原町→烏丸1區間，步行轉四条，地下鐵經五条至京都2區間。方向與月台依當日看板。
+            <a
+              href="https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/line02.htm"
+              target="_blank"
+              rel="noreferrer"
+            >
+              地下鐵官方站序 ↗
+            </a>
+          </p>
+        )}
+        <div className="map-stop-links">
+          {selected.events
+            .filter(
+              (e) => e.place && !(e.place === "hotel" && e.mode === "food"),
+            )
+            .map((e) => (
+              <span key={e.id}>
+                <MapLink
+                  query={findPlace(e.place)?.query}
+                  mode={
+                    e.mode === "train" || e.mode === "bus"
+                      ? "transit"
+                      : "walking"
+                  }
+                >
+                  {e.title}
+                </MapLink>
+              </span>
+            ))}
+        </div>
+      </details>
       <p className="local-notice">
-        查核日期2026/11/05。站序以普通列車為準；班次、方向及月台仍應核對當日看板。HARUKA僅為規劃、尚未訂票。
+        查核日期2026/11/05。此頁沒有即時到站資訊；HARUKA、冬季遊船及接駁班次仍待確認。離線可看示意圖，外部導航需要網路。
       </p>
+      {zoom && (
+        <div
+          className="route-zoom"
+          role="dialog"
+          aria-modal="true"
+          aria-label="交通圖放大檢視"
+          onKeyDown={(e) => {
+            if (e.key === "Escape") setZoom(false);
+          }}
+        >
+          <div className="route-zoom-tools">
+            <button autoFocus onClick={() => setZoom(false)}>
+              <X size={18} />
+              關閉
+            </button>
+            <button
+              onClick={() => setScale(Math.max(1, scale - 0.5))}
+              disabled={scale === 1}
+            >
+              縮小
+            </button>
+            <button
+              onClick={() => setScale(Math.min(4, scale + 0.5))}
+              disabled={scale === 4}
+            >
+              放大
+            </button>
+          </div>
+          <div className="route-zoom-scroll">
+            <img
+              src={src}
+              alt={`${selected.title}詳細交通圖`}
+              style={{ width: `${scale * 100}%`, maxWidth: "none" }}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

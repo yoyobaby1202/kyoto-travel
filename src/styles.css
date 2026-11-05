@@ -1745,3 +1745,118 @@ p {
     will-change: auto;
   }
 }
+.event-art {
+  float: right;
+  width: 66px;
+  height: 60px;
+  margin: 0 0 8px 12px;
+  flex-shrink: 0;
+}
+.md-transport:after,
+.md-stop:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.event-time {
+  font-size: 12px;
+}
+.map-day-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 20px 0;
+}
+.map-day-tabs button {
+  flex: 1;
+  background: #fffcf6;
+  border: 2px solid #493c35;
+  border-radius: 15px;
+  padding: 9px 3px;
+  font-weight: bold;
+}
+.map-day-tabs button[aria-pressed="true"] {
+  background: #e7bc7d;
+  box-shadow: 2px 3px 0 #493c35;
+}
+.map-day-tabs small {
+  display: block;
+  font-size: 11px;
+  margin-top: 3px;
+}
+.daily-route-map {
+  padding: 14px !important;
+}
+.daily-route-map h2 {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+.route-image-button {
+  display: block;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+  cursor: zoom-in;
+}
+.route-image-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 76vh;
+  object-fit: contain;
+}
+.route-image-button > span {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  font-size: 12px;
+  padding: 8px;
+  color: #705846;
+}
+.route-zoom {
+  position: fixed;
+  inset: 0;
+  background: #fffcf6;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.route-zoom-tools {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 2px solid #493c35;
+}
+.route-zoom-tools button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 2px solid #493c35;
+  border-radius: 12px;
+  background: #f5dfbf;
+  padding: 8px 12px;
+}
+.route-zoom-scroll {
+  overflow: auto;
+  flex: 1;
+  overscroll-behavior: contain;
+}
+.route-zoom-scroll img {
+  display: block;
+  height: auto;
+}
+.map-stop-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.meal-name {
+  flex-wrap: wrap;
+}
+.meal-setting p {
+  overflow-wrap: anywhere;
+}

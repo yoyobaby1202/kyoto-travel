@@ -50,7 +50,7 @@ test("所有已知地點Maps URL具有官方api=1與編碼後目的地", () => {
     new URL(maps("京都駅", "transit", "稲荷駅")).searchParams.get("origin"),
     "稲荷駅",
   );
-  assert.equal(restaurants[0].query, undefined);
+  assert.match(restaurants[0].query!, /牛たんの檸檬 京都店/);
 });
 test("延誤重算保留固定班次並回報產生的衝突", () => {
   const events = days[1].events;

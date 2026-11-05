@@ -21,3 +21,7 @@ assert.ok(sw.includes("fonts/huninn-trip.woff2"));
 assert.ok(sw.includes("index-"));
 assert.ok(!html.includes("https://fonts.googleapis.com"));
 console.log("建置資源、manifest子路徑、SW離線入口與原創插畫快取檢查成功。");
+for (let day = 1; day <= 5; day++) {
+  assert.ok(fs.existsSync(`dist/maps/day-${day}.svg`));
+  assert.ok(sw.includes(`maps/day-${day}.svg`), `Day ${day}交通圖未快取`);
+}

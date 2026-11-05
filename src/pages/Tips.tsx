@@ -73,8 +73,8 @@ export function Tips() {
           想吃的，慢慢選
         </h3>
         <p>
-          保留候選：檸檬牛舌、弘燒肉。分店與訂位尚待確認；弘燒肉日期亦待確認。其他用餐以「午餐／晚餐」呈現，可在當日卡片設定餐廳與Google
-          Maps。
+          保留候選：檸檬牛舌（12/13）與弘燒肉
+          京都站前店（12/11）皆預計前往，尚未確認訂位。 Maps。
         </p>
       </section>
       <section className="paper-card">

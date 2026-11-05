@@ -77,7 +77,7 @@ export const journeyMaps: Record<number, JourneyMapData> = {
       {
         path: "M170 255Q170 430 440 510",
         x: 75,
-        y: 365,
+        y: 445,
         text: "IT210・台灣虎航",
         kind: "flight",
       },

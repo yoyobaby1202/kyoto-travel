@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { dayPalette } from "../data/dayPalette";
 import { days } from "../data/itinerary";
 import { TrainArt } from "./TrainArt";
 export function TrainDayPicker({
@@ -20,7 +21,15 @@ export function TrainDayPicker({
     return () => window.clearTimeout(timer);
   }, [selected]);
   return (
-    <div className="md-picker">
+    <div
+      className="md-picker"
+      style={
+        {
+          "--md-day": dayPalette[selected - 1][0],
+          "--md-day-soft": dayPalette[selected - 1][1],
+        } as React.CSSProperties
+      }
+    >
       <div className="md-rail" aria-hidden="true">
         <div className="md-ties" />
         <div className="md-track" />

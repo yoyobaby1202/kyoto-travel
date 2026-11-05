@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ZoomIn, X } from "lucide-react";
+import { TrainDayPicker } from "../components/TrainDayPicker";
 import { JourneyMap } from "../components/JourneyMap";
 import { ArashiyamaMap } from "../components/ArashiyamaMap";
 import { days } from "../data/itinerary";
@@ -27,18 +28,7 @@ export function Transport() {
         <h1>今天，沿著這條線旅行。</h1>
         <p>每天一張交通小抄。方位為示意，班次依官方公告與現場看板。</p>
       </div>
-      <div className="map-day-tabs" aria-label="選擇交通日期">
-        {days.map((d) => (
-          <button
-            key={d.id}
-            aria-pressed={day === d.id}
-            onClick={() => setDay(d.id)}
-          >
-            12/{9 + d.id}
-            <small>{["四", "五", "六", "日", "一"][d.id - 1]}</small>
-          </button>
-        ))}
-      </div>
+      <TrainDayPicker selected={day} onSelect={setDay} />
       <section className="daily-route-map paper-card">
         <h2>{selected.title}</h2>
         <button

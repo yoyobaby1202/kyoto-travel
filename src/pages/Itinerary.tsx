@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { Download, AlertCircle, Bus } from "lucide-react";
+import { dayPalette as palette } from "../data/dayPalette";
 import { days, tourStops } from "../data/itinerary";
 import { findPlace } from "../data/places";
 import { DailyTimeline } from "../components/DailyTimeline";
@@ -8,13 +9,6 @@ import { DayArtwork } from "../components/DayArtwork";
 import { MapLink } from "../components/Common";
 import { useLocal } from "../utils/store";
 import { activeDay, download } from "../utils/time";
-const palette = [
-  ["#e5a18c", "#f8e4d8"],
-  ["#e3ae70", "#f6e7d2"],
-  ["#a8c9d0", "#e4f0ed"],
-  ["#c4b79b", "#f0ebdf"],
-  ["#dbb36f", "#f6edd9"],
-];
 export function Itinerary() {
   const [params, setParams] = useSearchParams();
   const raw = Number(params.get("day"));

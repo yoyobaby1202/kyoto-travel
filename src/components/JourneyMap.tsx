@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { PlaneArt } from "./PlaneArt";
+import { FlightGeography } from "./FlightGeography";
 import { journeyMaps } from "../data/journeyMaps";
 function Landmark({ art }: { art: string }) {
   return (
@@ -147,43 +149,49 @@ export function JourneyMap({
       aria-label={`${data.region}交通與景點示意圖`}
     >
       <rect width="1200" height="1550" rx="26" fill="#fffcf6" />
-      <path
-        d="M80 175 240 110 390 145 510 90 650 150 820 125 1080 230 1130 440 1090 650 1140 880 1070 1185 830 1280 660 1200 460 1290 220 1200 100 960 140 740 55 470Z"
-        fill={day === 3 ? "#edf0e5" : "#f5efdf"}
-        stroke="#d8cbb0"
-        strokeWidth="3"
-        strokeDasharray="8 10"
-      />
-      {day === 3 ? (
-        <>
-          <path
-            d="M50 170Q260 20 530 180T1150 200"
-            stroke="#d2e8e7"
-            strokeWidth="65"
-            fill="none"
-          />
-          <path
-            d="M50 170Q260 20 530 180T1150 200"
-            stroke="#9fc6cb"
-            strokeWidth="8"
-            fill="none"
-          />
-        </>
+      {data.flight ? (
+        <FlightGeography day={day} />
       ) : (
         <>
           <path
-            d="M80 180q100-100 210 0 110-130 230 0 130-100 250 10 120-100 280 50"
-            fill="#dce3c5"
-            stroke="#bfcca3"
-            strokeWidth="4"
+            d="M80 175 240 110 390 145 510 90 650 150 820 125 1080 230 1130 440 1090 650 1140 880 1070 1185 830 1280 660 1200 460 1290 220 1200 100 960 140 740 55 470Z"
+            fill={day === 3 ? "#edf0e5" : "#f5efdf"}
+            stroke="#d8cbb0"
+            strokeWidth="3"
+            strokeDasharray="8 10"
           />
-          <path
-            d="M730 140Q570 600 690 1230"
-            stroke="#d6e7e5"
-            strokeWidth="16"
-            fill="none"
-            opacity=".7"
-          />
+          {day === 3 ? (
+            <>
+              <path
+                d="M50 170Q260 20 530 180T1150 200"
+                stroke="#d2e8e7"
+                strokeWidth="65"
+                fill="none"
+              />
+              <path
+                d="M50 170Q260 20 530 180T1150 200"
+                stroke="#9fc6cb"
+                strokeWidth="8"
+                fill="none"
+              />
+            </>
+          ) : (
+            <>
+              <path
+                d="M80 180q100-100 210 0 110-130 230 0 130-100 250 10 120-100 280 50"
+                fill="#dce3c5"
+                stroke="#bfcca3"
+                strokeWidth="4"
+              />
+              <path
+                d="M730 140Q570 600 690 1230"
+                stroke="#d6e7e5"
+                strokeWidth="16"
+                fill="none"
+                opacity=".7"
+              />
+            </>
+          )}
         </>
       )}
       {lines(55, 55, [data.region], 27, "#9c876b")}
@@ -316,15 +324,8 @@ export function JourneyMap({
                   ? "rotate(25)"
                   : "rotate(155)"
             }
-            stroke="#493c35"
-            strokeWidth="2.5"
-            strokeLinejoin="round"
           >
-            <path
-              d="m-40-7 29-3 10-32 10 1 1 31 31 9v10L8 4-3 32h-9l4-30-30 2Z"
-              fill="#fffcf6"
-            />
-            <path d="m-30-6 3-12 7 1 1 10" fill="#d9957c" />
+            <PlaneArt x={-68} y={-51} width={136} height={102} />
           </g>
         </g>
       )}

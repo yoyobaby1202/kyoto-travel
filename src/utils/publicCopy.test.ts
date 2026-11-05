@@ -3,10 +3,11 @@ import assert from "node:assert/strict";
 import { initialTripHash } from "./initialTripHash";
 import { travelCopy } from "./travelCopy";
 import { days } from "../data/itinerary";
-test("每次首次載入皆為12/10，包含舊的Day2或Day5分享連結", () => {
+test("每次首次載入皆進入12/10行程，包含交通與小叮嚀分享連結", () => {
   assert.equal(initialTripHash(""), "#/?day=1");
-  assert.equal(initialTripHash("#/transport?day=2"), "#/transport?day=1");
+  assert.equal(initialTripHash("#/transport?day=2"), "#/?day=1");
   assert.equal(initialTripHash("#/?day=5"), "#/?day=1");
+  assert.equal(initialTripHash("#/tips?day=3"), "#/?day=1");
 });
 test("公開文案移除不確定提示，但不新增確認狀態或改動訂位資料", () => {
   for (const text of [

@@ -1,6 +1,4 @@
-export function initialTripHash(hash: string): string {
-  const [path, search = ""] = hash.replace(/^#/, "").split("?");
-  const params = new URLSearchParams(search);
-  params.set("day", "1");
-  return `#${path || "/"}?${params.toString()}`;
+/** Every fresh launch opens the December 10 itinerary; navigation after launch keeps dates linked. */
+export function initialTripHash(_hash: string): string {
+  return "#/?day=1";
 }

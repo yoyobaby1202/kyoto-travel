@@ -1,0 +1,7 @@
+{
+  "mode": "built-in image_gen",
+  "selected": "C",
+  "source": "public/branding/kyoto-trip-c.png",
+  "prompt": "Edit the reference selection board: isolate ONLY the approved rightmost C logo into a standalone square website/app icon. Preserve that exact C wordmark appearance: chunky soft retro rounded serif, dark espresso 'Kyoto' upper line, warm burnt-orange 'Trip' lower line, slightly overlapping/interlocking with thin cream separation where letters meet, same exact shapes and proportions, warm cream background. Keep a fine dark brown rounded-square border inset within canvas as in C. Do NOT use A or B. Remove the outside 'C' option label and all other designs and labels. Center the C logo in a 1024x1024 square with enough safe padding (approximately 12% on all sides) for phone app icon clipping. Entire canvas opaque warm cream #FFFCF6, no shadow, no mockup, no extra text or illustration, flat crisp edges, no gradients. Text must read exactly 'Kyoto' and 'Trip', each on its own line. This is asset extraction of the approved logo, not a redesign.",
+  "derivatives": "scripts/generate-icons.ts prepares sizes, maskable padding, startup screens and sharing preview."
+}

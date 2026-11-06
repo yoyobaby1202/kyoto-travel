@@ -14,6 +14,14 @@ const manifest = JSON.parse(
 );
 assert.equal(manifest.scope, "/kyoto-travel/");
 assert.equal(manifest.start_url, "/kyoto-travel/");
+for (const icon of manifest.icons) {
+  assert.ok(icon.src.includes("kyoto-trip-c"), "PWA仍指向舊圖示");
+  assert.ok(fs.existsSync(`dist/${icon.src}`), `缺少圖示：${icon.src}`);
+}
+assert.ok(html.includes('rel="icon"') && html.includes('kyoto-trip-c-32.png'));
+assert.ok(html.includes('kyoto-trip-c-180.png'));
+assert.ok(html.includes('property="og:image"'));
+assert.ok(fs.existsSync('dist/branding/kyoto-trip-c-share.png'));
 const sw = fs.readFileSync("dist/sw.js", "utf8");
 assert.ok(sw.includes("/kyoto-travel/index.html"));
 assert.ok(sw.includes("icons/icon.svg"));

@@ -26,17 +26,17 @@ export default defineConfig({
         background_color: "#FFFCF6",
         theme_color: "#FFFCF6",
         icons: [
-          { src: "icons/icon-192.png", sizes: "192x192", type: "image/png" },
+          { src: "icons/kyoto-trip-c-192.png", sizes: "192x192", type: "image/png" },
           {
-            src: "icons/icon-512.png",
+            src: "icons/kyoto-trip-c-512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "icons/icon.svg",
-            sizes: "any",
-            type: "image/svg+xml",
+            src: "icons/kyoto-trip-c-maskable.png",
+            sizes: "512x512",
+            type: "image/png",
             purpose: "maskable",
           },
         ],

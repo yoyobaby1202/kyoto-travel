@@ -1,31 +1,31 @@
-import fs from "node:fs";
-import React from "react";
-import { renderToStaticMarkup } from "react-dom/server";
-import { Resvg } from "@resvg/resvg-js";
-import { TrainArt } from "../src/components/TrainArt";
-const train = renderToStaticMarkup(
-  React.createElement(TrainArt, { x: 90, y: 135, width: 332, height: 180 }),
-);
-const icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="100" fill="#fffcf6"/><circle cx="256" cy="256" r="195" fill="#f2ddbb"/>${train}<path d="M93 325h326" stroke="#493c35" stroke-width="7" stroke-linecap="round"/><path d="m365 111-24-15 14-4-8-21 21 11 7-27 8 22 20-13-6 22 23-2-16 16 14 8-26 7" fill="#bd624d" stroke="#493c35" stroke-width="4" stroke-linejoin="round"/></svg>`;
-fs.writeFileSync("public/icons/icon.svg", icon);
-for (const width of [180, 192, 512])
-  fs.writeFileSync(
-    `public/icons/icon-${width}.png`,
-    new Resvg(icon, { fitTo: { mode: "width", value: width } })
-      .render()
-      .asPng(),
-  );
-for (const [width, height] of [
-  [1170, 2532],
-  [1179, 2556],
-  [1290, 2796],
-  [750, 1334],
-  [1125, 2436],
-]) {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><rect width="100%" height="100%" fill="#fffcf6"/><svg x="${width * 0.3}" y="${height * 0.37}" width="${width * 0.4}" height="${width * 0.4}" viewBox="0 0 512 512">${icon.replace(/^<svg[^>]*>/, "").replace(/<\/svg>$/, "")}</svg></svg>`;
-  fs.writeFileSync(
-    `public/icons/splash-${width}.png`,
-    new Resvg(svg).render().asPng(),
-  );
+import fs from "node:fs/promises";
+import sharp from "sharp";
+
+// Use the approved artwork; do not recreate its lettering with a fallback font.
+const source = "public/branding/kyoto-trip-c.png";
+const cream = "#FFFCF6";
+await fs.mkdir("public/icons", { recursive: true });
+for (const size of [16, 32, 48, 180, 192, 512]) {
+  await sharp(source).resize(size, size).png({palette:true,colours:128,effort:10}).toFile(`public/icons/kyoto-trip-c-${size}.png`);
 }
-console.log("Canonical train reused in app icons and splash assets.");
+const png512 = await sharp(source).resize(512, 512).png({palette:true,colours:128,effort:10}).toBuffer();
+// Keep legacy addresses valid with the same artwork.
+await fs.writeFile("public/icons/icon.svg", `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><title>Kyoto Trip</title><image width="512" height="512" href="data:image/png;base64,${png512.toString("base64")}"/></svg>`);
+for (const size of [180, 192, 512]) {
+  await fs.copyFile(`public/icons/kyoto-trip-c-${size}.png`, `public/icons/icon-${size}.png`);
+}
+const maskable = await sharp(source).resize(400, 400).png({palette:true,colours:128,effort:10}).toBuffer();
+await sharp({ create: { width: 512, height: 512, channels: 3, background: cream } })
+  .composite([{ input: maskable, left: 56, top: 56 }]).png({palette:true,colours:128,effort:10}).toFile("public/icons/kyoto-trip-c-maskable.png");
+for (const [width, height] of [[1170, 2532], [1179, 2556], [1290, 2796], [750, 1334], [1125, 2436]]) {
+  const size = Math.round(width * 0.4);
+  const logo = await sharp(source).resize(size, size).png({palette:true,colours:128,effort:10}).toBuffer();
+  const image = await sharp({ create: { width, height, channels: 3, background: cream } })
+    .composite([{ input: logo, left: Math.round((width - size) / 2), top: Math.round(height * 0.37) }]).png({palette:true,colours:128,effort:10}).toBuffer();
+  await fs.writeFile(`public/icons/kyoto-trip-c-splash-${width}.png`, image);
+  await fs.writeFile(`public/icons/splash-${width}.png`, image);
+}
+const preview = await sharp(source).resize(550, 550).png({palette:true,colours:128,effort:10}).toBuffer();
+await sharp({ create: { width: 1200, height: 630, channels: 3, background: cream } })
+  .composite([{ input: preview, left: 325, top: 40 }]).png({palette:true,colours:128,effort:10}).toFile("public/branding/kyoto-trip-c-share.png");
+console.log("Kyoto Trip C prepared for favicon, iPhone, PWA, splash and sharing.");

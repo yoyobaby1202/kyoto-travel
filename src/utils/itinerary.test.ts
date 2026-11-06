@@ -55,8 +55,8 @@ test("所有已知地點Maps URL具有官方api=1與編碼後目的地", () => {
 test("延誤重算保留固定班次並回報產生的衝突", () => {
   const events = days[1].events;
   const shifted = delayEvents(events, 30, 1);
-  assert.equal(shifted[1].start, "09:00");
-  assert.equal(shifted[3].start, "10:02");
+  assert.equal(shifted[1].start, "08:30");
+  assert.equal(shifted[3].start, "09:02");
   assert.ok(overlaps(shifted).length > 0);
   assert.throws(() =>
     delayEvents([{ ...events[0], start: "23:00", end: "23:59" }], 30, 0),

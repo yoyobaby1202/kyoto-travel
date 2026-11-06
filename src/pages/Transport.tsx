@@ -11,7 +11,6 @@ import { findPlace } from "../data/places";
 import { routes } from "../data/transport";
 import { TrainRouteCard } from "../components/TrainRouteCard";
 import { MapLink } from "../components/Common";
-import { KyotoBusGuide } from "../components/KyotoBusGuide";
 export function Transport() {
   const [params, setParams] = useSearchParams();
   const day = selectedTripDay(params.toString());
@@ -25,6 +24,8 @@ export function Transport() {
       ? ["haruka-out", "nara"]
       : day === 2
         ? ["sagano", "torokko"]
+        : day === 3
+          ? ["kyoto-tofukuji", "tofukuji-demachi", "eizan", "eizan-back", "demachi-gojo", "hankyu-return"]
         : day === 5
           ? ["haruka-back"]
           : [];
@@ -33,7 +34,7 @@ export function Transport() {
       <div className="page-title">
         <span className="eyebrow">OUR LITTLE ROUTE MAP</span>
         <h1>今天，沿著這條線旅行。</h1>
-        <p>每天一張交通小抄。方位為示意，班次依官方公告與現場看板。</p>
+        <p>每天一張交通小抄，沿著風景慢慢走。</p>
       </div>
       <TrainDayPicker selected={day} onSelect={setDay} />
       <section className="daily-route-map paper-card">
@@ -64,7 +65,7 @@ export function Transport() {
         {day === 2 && (
           <p className="note">
             小火車龜岡站 →
-            保津川遊船乘船場，搭乘39系統接駁巴士，10:35出發。乘車位置及運行資訊請見官方接駁說明。
+            保津川遊船乘船場，搭乘39系統接駁巴士，09:25–10:00安排轉乘，11:00登船。乘車位置及運行資訊請見官方接駁說明。
             <a
               href="https://www.keihankyotokotsu.jp/bustimetable/timetable.php?no=1&stop_cd=2050"
               target="_blank"
@@ -74,24 +75,16 @@ export function Transport() {
             </a>
           </p>
         )}
-        {day === 3 && (
+        {day === 4 && (
           <p className="note">
             08:45前抵達八條東口，精確集合點依Klook憑證。觀光巴士包含伊根與天橋立之間的移動；景點時間與順序均由旅行團安排。
           </p>
         )}
-        {day === 4 && (
-          <KyotoBusGuide />
-        )}
-        {day === 4 && (
+        {day === 3 && (
           <p className="note">
-            清水寺去程採市巴士加步行，含候車預留60分鐘。回程阪急京都河原町→烏丸1區間，步行轉四条，地下鐵經五条至京都2區間。方向與月台依當日看板。
-            <a
-              href="https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/line02.htm"
-              target="_blank"
-              rel="noreferrer"
-            >
-              地下鐵官方站序 ↗
-            </a>
+            琉璃光院10:00開門，八瀨比叡山口站至寺院官方步行參考約12分鐘；
+            出町柳請搭「八瀬比叡山口行」。回程京阪選停靠清水五条的普通列車，出站後預留上坡步行與午餐時間。
+            <a href="https://rurikoin.komyoji.com/access/" target="_blank" rel="noreferrer">琉璃光院官方交通 ↗</a>
           </p>
         )}
         <div className="map-stop-links">
@@ -133,9 +126,6 @@ export function Transport() {
           </p>
         ))}
       </details>
-      <p className="local-notice">
-        離線可查看交通圖與景點資訊，Google Maps導航及官方網站需要網路。
-      </p>
       {zoom && (
         <div
           className="route-zoom"

@@ -188,7 +188,7 @@ export function JourneyMap({
             stroke="#e4d7c2"
             strokeWidth="2"
           />
-          {day === 3 ? (
+          {day === 4 ? (
             <>
               <path
                 d="M650 450Q780 400 1150 440V760Q750 730 650 450Z"
@@ -213,7 +213,7 @@ export function JourneyMap({
                 stroke="#bfcca3"
                 strokeWidth="4"
               />
-              {day === 4 && (
+              {day === 3 && (
                 <path
                   d="M560 120Q540 700 570 1300"
                   stroke="#d6e7e5"
@@ -304,7 +304,7 @@ export function JourneyMap({
                 cx={-width / 2 + 21}
                 cy="64"
                 r="13"
-                fill={day === 3 ? "#d7e8e8" : "#f0d2b3"}
+                fill={day === 4 ? "#d7e8e8" : "#f0d2b3"}
                 stroke="#8b755e"
               />
               <text
@@ -394,7 +394,7 @@ export function JourneyMap({
         width="1100"
         height="190"
         rx="24"
-        fill={day === 3 ? "#e2ebea" : "#f3e3ce"}
+        fill={day === 4 ? "#e2ebea" : "#f3e3ce"}
         stroke="#d0bda4"
         strokeWidth="2"
       />

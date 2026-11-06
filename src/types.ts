@@ -32,6 +32,7 @@ export interface Event {
   status: Status;
   place?: string;
   route?: string;
+  connections?: string[];
   note?: string;
   fixed?: boolean;
   restaurant?: string;

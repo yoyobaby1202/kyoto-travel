@@ -20,6 +20,6 @@ test("五天交通圖具有景點與路線，只有來回飛機設定動畫路�
       );
   }
   assert.match(journeyMaps[1].notes.join(""), /2區間・中途1站/);
-  assert.match(journeyMaps[3].notes.join(""), /伊根→天橋立車程/);
-  assert.match(journeyMaps[4].notes.join(""), /四条→五条→京都/);
+  assert.match(journeyMaps[4].notes.join(""), /伊根→天橋立車程/);
+  assert.match(journeyMaps[3].notes.join(""), /四条→五条→京都/);
 });

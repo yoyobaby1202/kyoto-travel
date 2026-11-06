@@ -1878,14 +1878,16 @@ p {
 .route-image-button > .illustrated-arashiyama {
   aspect-ratio: 1019/1403;
 }
-.kyoto-bus-guide { margin-top: 20px; padding: clamp(14px, 3vw, 24px); background: #fff8eb; border: 2px solid #d4b995; border-radius: 20px; }
-.kyoto-bus-guide h3, .kyoto-bus-guide li strong { display: flex; align-items: center; gap: 8px; }
-.kyoto-bus-guide h3 { margin: 8px 0 20px; }
-.kyoto-bus-guide ol { padding-left: 24px; }
-.kyoto-bus-guide li { padding-left: 4px; margin-bottom: 18px; }
-.kyoto-bus-guide li::marker { color: #a55f42; font-weight: bold; }
-.kyoto-bus-guide p { line-height: 1.8; }
-.kyoto-bus-guide li p { margin: 6px 0; }
-.kyoto-bus-payment { border-top: 1px dashed #d4b995; padding-top: 14px; }
-.kyoto-bus-sources { display: flex; flex-wrap: wrap; gap: 12px 18px; font-size: .85rem; }
-.kyoto-bus-sources a { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Four compact tabs preserve the existing mobile visual style. */
+#maple-app .md-nav { gap: 5px; padding-left: 8px; padding-right: 8px; }
+#maple-app .md-nav > a { min-width: 0; flex: 1 1 0; white-space: nowrap; padding: 8px 5px; font-size: 13px; gap: 4px; }
+#maple-app .md-nav > a svg { flex-shrink: 0; width: 15px; }
+.recap-player { aspect-ratio: 16 / 9; min-height: 200px; width: 100%; border: 2px solid #493c35; border-radius: 16px; overflow: hidden; background: #211e1b; }
+.recap-player iframe { width: 100%; height: 100%; border: 0; display: block; }
+.recap-empty { text-align: center; padding: 30px 8px; }
+.recap-empty > svg { margin: 0 auto 15px; color: #a5654b; }
+.recap-page .secondary { margin-top: 16px; }
+.recap-form { display: grid; gap: 12px; margin-top: 20px; }
+.recap-form input { min-width: 0; width: 100%; padding: 12px; border: 2px solid #a99a87; border-radius: 12px; background: #fffcf6; font-size: 16px; }
+@media (max-width: 350px) { #maple-app .md-nav > a { font-size: 11px; gap: 3px; padding-inline: 2px; } }

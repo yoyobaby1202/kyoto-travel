@@ -13,11 +13,12 @@ import {
   NotebookTabs,
   Leaf,
   WifiOff,
-  Download,
+  Film,
 } from "lucide-react";
 import { Itinerary } from "./pages/Itinerary";
 import { Transport } from "./pages/Transport";
 import { Tips } from "./pages/Tips";
+import { Recap } from "./pages/Recap";
 import { JourneyHero } from "./components/JourneyHero";
 import { PwaStatus } from "./components/PwaStatus";
 import { selectedTripDay } from "./utils/selectedTripDay";
@@ -26,6 +27,7 @@ const nav = [
   { to: "/", label: "行程", icon: CalendarDays },
   { to: "/transport", label: "交通", icon: TrainFront },
   { to: "/tips", label: "小叮嚀", icon: NotebookTabs },
+  { to: "/recap", label: "旅程回顧", icon: Film },
 ];
 function Shell() {
   const { pathname, search } = useLocation();
@@ -33,7 +35,6 @@ function Shell() {
   const trip = pathname === "/" || pathname === "/itinerary";
   const [online, setOnline] = useState(navigator.onLine);
   const [now, setNow] = useState(tokyoNow());
-  const [install, setInstall] = useState(false);
   useEffect(() => {
     const update = () => setOnline(navigator.onLine);
     window.addEventListener("online", update);
@@ -81,22 +82,7 @@ function Shell() {
             {online ? <span className="network-dot" /> : <WifiOff size={12} />}{" "}
             {online ? "已連線" : "離線快取"} · 京都 {now.slice(11, 16)}
           </span>
-          <button onClick={() => setInstall(!install)}>
-            <Download size={12} />
-            加入主畫面
-          </button>
         </div>
-        {install && (
-          <section className="install-tip">
-            <strong>把旅日記帶著走</strong>
-            <p>
-              iPhone
-              Safari點「分享」→「加入主畫面」。首次連網完成快取後可離線閱讀行程與交通；Google
-              Maps及官網仍需網路。
-            </p>
-            <button onClick={() => setInstall(false)}>知道了 ×</button>
-          </section>
-        )}
         <div className="pwa-status-wrap">
           <PwaStatus />
         </div>
@@ -106,12 +92,12 @@ function Shell() {
             <Route path="/itinerary" element={<Itinerary />} />
             <Route path="/transport" element={<Transport />} />
             <Route path="/tips" element={<Tips />} />
+            <Route path="/recap" element={<Recap />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         <footer className="md-bottom">
           把京都的風景，一起收藏。
-          <small>靜態旅行規劃 · 班次依官方公告與現場看板</small>
         </footer>
       </div>
     </div>

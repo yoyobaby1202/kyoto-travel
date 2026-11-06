@@ -25,7 +25,8 @@ export function DailyTimeline({
     <div className="md-timeline">
       {day.events.map((event: Event) => {
         const p = findPlace(event.place);
-        const route = routes.find((r) => r.id === event.route);
+        const eventRoutes = [event.route, ...(event.connections || [])]
+          .map(id => routes.find(r => r.id === id)).filter(r => r !== undefined);
         const clock = displayTime(event);
         const transport = ["train", "walk", "bus", "boat", "flight"].includes(
           event.mode,
@@ -111,13 +112,13 @@ export function DailyTimeline({
                   <MealCard slotId="3-lunch" />
                 </div>
               )}
-              {route && (
+              {eventRoutes.length > 0 && (
                 <details className="event-details">
                   <summary>
                     方向・站數・搭車小抄
                     <ChevronDown size={13} />
                   </summary>
-                  <TrainRouteCard route={route} reverse={event.id === "2-13"} />
+                  {eventRoutes.map(route => <TrainRouteCard key={route.id} route={route} reverse={event.id === "2-13"} />)}
                 </details>
               )}
               {!transport && (

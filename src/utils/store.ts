@@ -59,7 +59,7 @@ export function useLocal<T>(
       set(v);
       setError("");
     } catch {
-      setError("儲存失敗，可能空間不足。請先匯出備份並釋放容量。");
+      setError("儲存失敗，請確認瀏覽器儲存空間後重試。");
       throw new Error("儲存失敗");
     }
   }

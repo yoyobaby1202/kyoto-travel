@@ -91,7 +91,7 @@ export function Itinerary() {
             <h3>小火車之後，還要搭巴士</h3>
             <p>
               トロッコ亀岡站 → 站外39系統巴士 →
-              保津川下り乘船場。接駁10:35出發，船班報到依票券資訊。
+              保津川下り乘船場。09:25–10:00安排轉乘，11:00登船，報到依票券資訊。
             </p>
             <a
               className="text-link"
@@ -112,7 +112,7 @@ export function Itinerary() {
           </div>
         </details>
       )}
-      {id === 3 && (
+      {id === 4 && (
         <details className="day-reminder" open>
           <summary>
             <AlertCircle size={15} />

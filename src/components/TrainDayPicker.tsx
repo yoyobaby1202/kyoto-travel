@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { dayPalette } from "../data/dayPalette";
 import { days } from "../data/itinerary";
 import { TrainArt } from "./TrainArt";
@@ -12,7 +12,8 @@ export function TrainDayPicker({
   const [moving, setMoving] = useState(false);
   const [direction, setDirection] = useState(1);
   const previous = useRef(selected);
-  useEffect(() => {
+  // Face the destination before the browser paints the new position.
+  useLayoutEffect(() => {
     if (previous.current === selected) return;
     setDirection(selected > previous.current ? 1 : -1);
     previous.current = selected;

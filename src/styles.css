@@ -1020,6 +1020,10 @@ p {
 .md-train.train-moving .train-body {
   animation: train-rattle 0.13s ease-in-out 6 alternate;
 }
+.md-train > .sagano-train {
+  transform: scaleX(var(--train-direction, 1));
+  transform-origin: center;
+}
 .md-train.train-moving .train-wheel {
   transform-box: fill-box;
   transform-origin: center;
@@ -1513,7 +1517,8 @@ p {
 }
 @keyframes train-roll {
   to {
-    transform: rotate(calc(var(--train-direction, 1) * 360deg));
+    /* The whole train mirrors on return trips, including wheel rotation. */
+    transform: rotate(360deg);
   }
 }
 @media (min-width: 700px) {

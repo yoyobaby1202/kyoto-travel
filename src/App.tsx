@@ -45,14 +45,11 @@ function Shell() {
       clearInterval(timer);
     };
   }, []);
-  useEffect(() => {
-    window.scrollTo({ top: 0 });
-  }, [pathname]);
   return (
     <div id="maple-app">
       <div className="md-shell">
         <header className="md-top">
-          <NavLink to={`/?day=${selectedDay}`}>
+          <NavLink to={`/?day=${selectedDay}`} preventScrollReset>
             <Leaf size={14} />
             ふたりの京都旅日記
           </NavLink>
@@ -63,6 +60,7 @@ function Shell() {
           {nav.map(({ to, label, icon: Icon }) => (
             <NavLink
               to={`${to}?day=${selectedDay}`}
+              preventScrollReset
               key={to}
               end={to === "/"}
               className={({ isActive }) =>

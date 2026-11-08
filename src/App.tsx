@@ -32,7 +32,6 @@ const nav = [
 function Shell() {
   const { pathname, search } = useLocation();
   const selectedDay = selectedTripDay(search);
-  const trip = pathname === "/" || pathname === "/itinerary";
   const [online, setOnline] = useState(navigator.onLine);
   const [now, setNow] = useState(tokyoNow());
   useEffect(() => {
@@ -59,7 +58,7 @@ function Shell() {
           </NavLink>
           <span>2026.12.10–12.14</span>
         </header>
-        {trip && <JourneyHero />}
+        <JourneyHero />
         <nav className="md-nav" aria-label="主要頁籤">
           {nav.map(({ to, label, icon: Icon }) => (
             <NavLink

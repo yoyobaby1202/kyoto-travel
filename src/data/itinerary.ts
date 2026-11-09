@@ -91,25 +91,25 @@ export const days: Day[] = [
         "id": "1-8",
         "start": "16:30",
         "end": "17:30",
-        "title": "京阪伏見稲荷 → 祇園四条・步行至高島屋",
+        "title": "京阪伏見稲荷 → 祇園四条・前往檸檬牛舌",
         "mode": "train",
-        "note": "大社步行至京阪伏見稲荷站，搭往出町柳方向的普通列車至祇園四条；過四条大橋前往京都高島屋7樓，含候車、步行與到店緩衝。",
+        "note": "大社步行至京阪伏見稲荷站，搭往出町柳方向的普通列車至祇園四条；過四条大橋步行至河原町的檸檬牛舌 京都店，含候車與步行。",
         "status": "預計",
         "fixed": false,
-        "place": "mishima",
+        "place": "lemon",
         "route": "inari-gion"
       },
       {
-        "id": "1-mishima-takashimaya",
+        "id": "1-lemon-dinner",
         "start": "17:30",
         "end": "19:00",
-        "title": "三嶋亭 高島屋店・晚餐",
+        "title": "檸檬牛舌 京都店・晚餐",
         "mode": "food",
-        "note": "17:30到店現場候位，這個時段含候位與用餐安排；不接受訂位。若候位較久，餐後祇園散步順延。",
+        "note": "17:30–19:00安排用餐，餐後步行至祇園散步。",
         "status": "預計",
         "fixed": false,
         "meal": true,
-        "restaurant": "mishima"
+        "restaurant": "lemon"
       },
       {
         "id": "1-10",
@@ -120,7 +120,7 @@ export const days: Day[] = [
         "place": "gion",
         "status": "預計",
         "fixed": false,
-        "note": "由高島屋步行過四条大橋前往祇園，沿花見小路散步；留意私人巷道及攝影標示。"
+        "note": "由檸檬牛舌 京都店步行過四条大橋前往祇園，沿花見小路散步，之後返回飯店。"
       },
       {
         "id": "1-hotel-after-gion",
@@ -469,37 +469,54 @@ export const days: Day[] = [
         "note": "由祇園步行穿過鴨川前往四條河原町。"
       },
       {
-        "id": "4-lemon-walk",
+        "id": "3-to-karasemitei",
         "start": "18:00",
-        "end": "18:30",
-        "title": "前往檸檬牛舌・用餐緩衝",
+        "end": "19:00",
+        "title": "河原町 → 烏丸・丸太町・空蟬庭",
+        "mode": "train",
+        "status": "預計",
+        "fixed": false,
+        "place": "karasemitei",
+        "route": "kawaramachi-karasuma",
+        "connections": [
+          "shijo-marutamachi"
+        ],
+        "note": "阪急京都河原町往大阪梅田方向至烏丸，步行轉地下鐵四条往國際會館方向至丸太町，再往西步行約20分鐘到店；含候車及轉乘。"
+      },
+      {
+        "id": "3-karasemitei-checkin",
+        "start": "19:00",
+        "end": "19:30",
+        "title": "空蟬庭附近・入店緩衝",
         "mode": "walk",
         "status": "預計",
         "fixed": false,
-        "place": "lemon"
+        "place": "karasemitei",
+        "note": "19:30準時入店；備妥訂位資訊，2人用餐。"
       },
       {
-        "id": "4-10",
-        "start": "18:30",
-        "end": "19:30",
-        "title": "檸檬牛舌 京都店・晚餐",
-        "mode": "food",
-        "status": "預計",
-        "fixed": true,
-        "restaurant": "lemon",
-        "meal": true
-      },
-      {
-        "id": "4-11",
+        "id": "3-karasemitei-dinner",
         "start": "19:30",
         "end": "20:30",
-        "title": "河原町自由散步・返回飯店",
+        "title": "空蟬庭・晚餐",
+        "mode": "food",
+        "status": "已確認",
+        "fixed": true,
+        "restaurant": "karasemitei",
+        "meal": true,
+        "note": "已訂位・2人・僅訂座位。餐費當天現場支付；店家座位使用原則1小時，依現場安排。"
+      },
+      {
+        "id": "3-hotel-after-karasemitei",
+        "start": "20:30",
+        "end": "21:30",
+        "title": "丸太町 → 京都・回飯店休息",
         "mode": "train",
         "status": "預計",
         "fixed": false,
         "place": "hotel",
-        "route": "hankyu-return",
-        "note": "散步後可步行至地下鐵四条，或阪急京都河原町至烏丸轉乘；地下鐵往竹田方向至京都，再步行回飯店。"
+        "route": "marutamachi-kyoto",
+        "note": "步行回地下鐵丸太町，搭往竹田方向的烏丸線至京都；含步行、候車及飯店步行預留60分鐘。"
       }
     ]
   },
@@ -579,24 +596,46 @@ export const days: Day[] = [
         "fixed": false
       },
       {
-        "id": "3-7",
+        "id": "4-to-mishima",
         "start": "18:00",
-        "end": "19:30",
-        "title": "晚餐",
+        "end": "19:00",
+        "title": "京都站 → 四条・河原町高島屋",
+        "mode": "train",
+        "status": "預計",
+        "fixed": false,
+        "place": "mishima",
+        "route": "kyoto-shijo",
+        "connections": [
+          "karasuma-kawaramachi"
+        ],
+        "note": "旅行團返回京都後，地下鐵京都往國際會館方向至四条，步行轉阪急烏丸往京都河原町，出站直達京都高島屋，前往7樓。含轉乘與步行。"
+      },
+      {
+        "id": "4-mishima-dinner",
+        "start": "19:00",
+        "end": "20:30",
+        "title": "三嶋亭 高島屋店・晚餐",
         "mode": "food",
         "status": "預計",
         "fixed": false,
-        "meal": true
+        "restaurant": "mishima",
+        "meal": true,
+        "note": "19:00左右到店現場候位，不接受訂位；用餐及結束時間依現場候位調整。餐後直接回飯店休息。"
       },
       {
-        "id": "3-8",
-        "start": "19:30",
-        "end": "20:00",
-        "title": "返回飯店",
-        "mode": "walk",
-        "place": "hotel",
+        "id": "4-hotel-after-mishima",
+        "start": "20:30",
+        "end": "21:30",
+        "title": "河原町 → 京都・回飯店休息",
+        "mode": "train",
         "status": "預計",
-        "fixed": false
+        "fixed": false,
+        "place": "hotel",
+        "route": "hankyu-return",
+        "connections": [
+          "shijo-kyoto"
+        ],
+        "note": "阪急京都河原町往大阪梅田方向至烏丸，步行轉地下鐵四条往竹田方向至京都，再步行回飯店。餐後不另安排散步。"
       }
     ]
   },

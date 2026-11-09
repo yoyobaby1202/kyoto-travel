@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-09",
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "path": "public/illustrations/journey/day-1.webp",
+      "prompt": "Precisely edit this existing Day1 Kyoto map. Preserve EXACT1200x1550 canvas, all landmarks, coastline, labels, dotted flight path and all geometry unchanged for airplane animation registration. ONLY change bottom dinner line from '17:30 三嶋亭 高島屋店 → 祇園散步 → 飯店' to '17:30 檸檬牛舌 京都店 → 祇園散步 → 飯店'. Remove small '現場候位・不接受訂位' text entirely, leaving neat cream whitespace. Preserve 伏見稻荷15:30–16:30, IT21007:00台灣→10:25日本, HARUKA12:14–13:34backup12:44–14:04, JR奈良線 all unchanged. Do not add confirmation or booking labels, do not add airplane sprite, do not redesign."
+    },
+    {
+      "path": "public/illustrations/journey/day-3.webp",
+      "prompt": "Edit this existing Day3 Kyoto illustrated map in its EXACT same picture-book style, ink outlines, cream paper, maple orange and sage palette. Keep all daytime attractions, railway routes to Rurikoin, Kiyomizu13:30–15:00 and Rurikoin10:00–11:30, original labels and proportions. REMOVE every '檸檬牛舌' name and its18:30–19:30 dinner time, remove lemon-themed restaurant motif. NEW DINNER is '空蟬庭 19:30–20:30・2位', a beautiful machiya restaurant and tonkatsu pork cutlet plate. Position new restaurant in the WESTERN part of the city, left side of image, SOUTH of 出町柳 station and NORTHWEST of 河原町/Gion; it is in 上京區浮田町 near 丸太町, NOT in Kawaramachi. Preserve Kawaramachi shops at left of Kamo River below the restaurant, and Gion east of river. Add small station label '丸太町' EAST/right of 空蟬庭 and WEST/left of Kamo River; a gentle dotted path from station to restaurant caption '步行約20分'. Draw unobtrusive thin route from 河原町 west to 烏丸, interchange 四条 north to 丸太町, use tiny caption '阪急1區間・轉地下鐵2區間'. Return from 丸太町 to 京都 shown understated with caption '地下鐵往竹田・4區間'. Replace bottom footer completely with '19:30 空蟬庭・2位已訂位｜餐後回飯店'. No old footer saying四条→京都2區間 for this day; new return begins丸太町 and is4區間. Retain all morning/daytime blueJRpurpleKeihan greenEizan route station count facts. North up; Kyoto station south of Karasemitei, Rurikoin northeast of all, hotel not required if crowded. Avoid covering houses with big boxes, use small neat captions. No private reservation ID, no credit card text, no artificial sea, no extra title. Portrait1200x1550. All vehicles static."
+    },
+    {
+      "path": "public/illustrations/journey/day-4.webp",
+      "prompt": "Precisely edit this existing Ine/Amanohashidate Day4 Kyoto tour map, preserving EXACT1200x1550 canvas, every scene, landmark, bus and route color/geography, all labels. Only revise the BOTTOM footer strip. Preserve '08:45前抵達・09:00集合' and '景點順序依旅行團安排' and '17:30–18:00返回京都'. Replace generic '午餐・晚餐' area with dinner information '19:00 三嶋亭 高島屋店｜餐後回飯店' plus a small second line '不接受訂位・現場候位'. Allow footer to be slightly taller upwards to fit two neatly separated lines if needed without covering Kyoto station label. Add a very tiny matching sukiyaki pot icon beside dinner text, no other new drawings. Tour itself is bus, dinner transfer information remains on website below. No Gion stroll on this day, no false booking confirmation, no new title, keep same elegant picture-book look."
+    }
+  ],
+  "day3Refinement": "Precise geography correction to this Kyoto map, preserve all other art/text. Clear station '清水五条' is a Keihan station on the EAST bank of the Kamo river, not the west bank. Move ONLY the small 清水五条 station dot+label to just RIGHT/EAST of the blue river in the lower-middle area, south/below the Kawaramachi/Gion area and north/above Kyoto station, with a short purple branch from the Keihan line ending there. The walking dotted path to 清水寺 should start from this east-bank station and continue east/uphill without crossing the river. Remove the previous west-bank 清水五条 label so there is only ONE. Keep 京都站 southwest of station, 東福寺 south/southeast, unchanged. Keep restaurant空蟬庭 at western Kyoto upper-left with19:30–20:30, 丸太町/四条/烏丸/河原町 west of river and entire dinner route exactly as drawn. Do not alter any times or station count labels; keep all other imagery and1200x1550 proportion. Only this one station's location and walking path should change.",
+  "changes": [
+    {
+      "date": "2026-12-10",
+      "restaurant": "檸檬牛舌 京都店",
+      "time": "17:30–19:00",
+      "after": "祇園散步後回飯店",
+      "status": "用餐安排"
+    },
+    {
+      "date": "2026-12-12",
+      "restaurant": "空蟬庭（空蝉亭 Karasemitei）",
+      "time": "19:30–20:30",
+      "people": 2,
+      "status": "已訂位，僅訂座位，當天支付",
+      "after": "餐後丸太町搭地下鐵至京都，回飯店休息"
+    },
+    {
+      "date": "2026-12-13",
+      "restaurant": "三嶋亭 高島屋店",
+      "time": "19:00左右到店",
+      "status": "現場候位，不接受訂位",
+      "after": "直接回飯店休息"
+    }
+  ],
+  "sources": [
+    "https://www.tablecheck.com/ja/shops/karasemitei/reserve",
+    "https://www.takashimaya.co.jp/kyoto/specialtystores/restaurant/shop/70011",
+    "https://www.takashimaya.co.jp/kyoto/departmentstore/sys_access.html",
+    "https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/line02.htm"
+  ],
+  "privacy": "不包含私人預約編號、姓名、付款卡號或訂單截圖。",
+  "validation": "TypeScript、既有21項測試、Vite建置、Pages子路徑和離線資源檢查；圖片與正式頁面另作目視確認。"
+}

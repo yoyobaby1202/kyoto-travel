@@ -6,7 +6,7 @@ import { restaurants } from "../data/places";
 test("晚餐日期分店、時間與原有固定轉乘正確", () => {
   const dinner = (day: number) =>
     days[day - 1].events.find((e) => e.meal && e.title.includes("晚餐"))!;
-  assert.equal(dinner(1).restaurant, "mishima");
+  assert.equal(dinner(1).restaurant, "lemon");
   assert.equal(dinner(1).start, "17:30");
   assert.equal(dinner(1).status, "預計");
   assert.equal(restaurants.find(r => r.id === "mishima")!.reservationPolicy, "walk-in-only");
@@ -24,8 +24,16 @@ test("晚餐日期分店、時間與原有固定轉乘正確", () => {
   assert.equal(hiro.phone, "075-662-1129");
   assert.match(hiro.official!, /hachijoguchi\.php$/);
   assert.match(new URL(hiro.mapsUrl!).searchParams.get("query")!, /八条口店.*南山王町25/);
-  assert.equal(dinner(3).restaurant, "lemon");
-  assert.equal(dinner(3).start, "18:30");
+  assert.equal(dinner(3).restaurant, "karasemitei");
+  assert.equal(dinner(3).start, "19:30");
+  assert.equal(dinner(3).end, "20:30");
+  assert.equal(dinner(3).status, "已確認");
+  assert.match(dinner(3).note!, /2人/);
+  assert.equal(dinner(4).restaurant, "mishima");
+  assert.equal(dinner(4).start, "19:00");
+  assert.notEqual(dinner(4).status, "已確認");
+  assert.equal(days[3].events.at(-1)!.place, "hotel");
+  assert.equal(restaurants.find(r=>r.id === "karasemitei")!.phone, "075-802-1313");
   assert.match(restaurants.find((r) => r.id === "hiro")!.ja, /八条口店/);
   for (const r of restaurants) {
     assert.ok(r.mapsUrl);

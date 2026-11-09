@@ -27,7 +27,9 @@ export function Transport() {
       : day === 2
         ? ["sagano", "torokko"]
         : day === 3
-          ? ["kyoto-tofukuji", "tofukuji-demachi", "eizan", "eizan-back", "demachi-gojo", "hankyu-return"]
+          ? ["kyoto-tofukuji", "tofukuji-demachi", "eizan", "eizan-back", "demachi-gojo", "kawaramachi-karasuma", "shijo-marutamachi", "marutamachi-kyoto"]
+        : day === 4
+          ? ["kyoto-shijo", "karasuma-kawaramachi", "hankyu-return", "shijo-kyoto"]
         : day === 5
           ? ["haruka-back"]
           : [];
@@ -89,11 +91,11 @@ export function Transport() {
             <a href="https://rurikoin.komyoji.com/access/" target="_blank" rel="noreferrer">琉璃光院官方交通 ↗</a>
           </p>
         )}
-        {(day === 1 || day === 2) && dinner && (
+        {dinner && (
           <section className="note">
             <h3>{dinner.title}</h3>
             <p>{dinner.start}–{dinner.end} · {dinner.note}</p>
-            <MealCard slotId={dinner.id} preset={dinner.restaurant} />
+            <MealCard slotId={dinner.id} preset={dinner.restaurant} confirmed={dinner.status === "已確認"} />
           </section>
         )}
         <div className="map-stop-links">

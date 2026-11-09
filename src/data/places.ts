@@ -432,6 +432,24 @@ export const restaurants: Restaurant[] = [
     "lastOrder": "20:00（最終入店與最後點餐）",
     "reservationPolicy": "walk-in-only",
     "alternative": "京都高島屋7樓其他營業中的餐廳"
+  },
+  {
+    "id": "karasemitei",
+    "name": "空蟬庭",
+    "ja": "空蝉亭（Karasemitei）",
+    "query": "空蝉亭 京都市上京区下立売通大宮西入浮田町600 1F",
+    "address": "〒602-8104 京都府京都市上京区下立売通大宮西入浮田町600 1F",
+    "phone": "075-802-1313",
+    "official": "https://www.tablecheck.com/ja/shops/karasemitei/reserve",
+    "reservation": "https://www.tablecheck.com/ja/shops/karasemitei/reserve",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E7%A9%BA%E8%9D%89%E4%BA%AD%20%E4%BA%AC%E9%83%BD%E5%B8%82%E4%B8%8A%E4%BA%AC%E5%8C%BA%E4%B8%8B%E7%AB%8B%E5%A3%B2%E9%80%9A%E5%A4%A7%E5%AE%AE%E8%A5%BF%E5%85%A5%E6%B5%AE%E7%94%B0%E7%94%BA600%201F",
+    "description": "12/12 19:30，2人已訂位，僅訂座位、當天現場支付。",
+    "duration": "原則60分鐘，依店家安排",
+    "art": "food",
+    "dish": "熟成豬肉炸豬排",
+    "hours": "依店家當日公告",
+    "lastOrder": "依店家現場資訊",
+    "alternative": "依現場用餐安排"
   }
 ];
 export const findPlace = (id?: string) => [...places, ...restaurants].find(p=>p.id===id);

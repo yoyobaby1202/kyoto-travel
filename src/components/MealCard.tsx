@@ -7,9 +7,11 @@ import { validateMeal, type MealSetting } from "../utils/meals";
 export function MealCard({
   slotId,
   preset,
+  confirmed = false,
 }: {
   slotId: string;
   preset?: string;
+  confirmed?: boolean;
 }) {
   const [settings, save, ready, error] = useLocal<Record<string, MealSetting>>(
     "meal-settings",
@@ -64,6 +66,7 @@ export function MealCard({
         <div className="meal-name">
           <strong>{name}</strong>
           {walkInOnly && <span>現場候位・不接受訂位</span>}
+          {!walkInOnly && !current && confirmed && <span>已訂位</span>}
           {current && (!walkInOnly || current.status === "已完成用餐") && ["已訂位", "已完成用餐"].includes(current.status) && (
             <span>{current.status}</span>
           )}
@@ -166,7 +169,7 @@ export function MealCard({
           </p>
           <label>
             訂位狀態
-            <select name="status" defaultValue={current?.status || "預計前往"}>
+            <select name="status" defaultValue={current?.status || (confirmed ? "已訂位" : "預計前往")}>
               {["尚未決定", "預計前往", "已訂位", "已完成用餐"].filter(s => !walkInOnly || s !== "已訂位").map((s) => (
                 <option key={s} value={s}>
                   {s === "尚未決定"

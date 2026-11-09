@@ -79,6 +79,7 @@ export function DailyTimeline({
                 <MealCard
                   slotId={event.id}
                   preset={event.restaurant}
+                  confirmed={event.status === "已確認"}
                 />
               ) : (
                 <div className="md-stop-actions">

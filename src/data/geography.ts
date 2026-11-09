@@ -1,4 +1,4 @@
-/** Approximate schematic anchors; navigation uses named places and official addresses. */
+/** Approximate schematic anchors, not navigation pins. */
 export const geographicAnchors: Record<string,{lat:number;lon:number}> = {
   "taoyuan": {
     "lat": 25.0793174,
@@ -127,6 +127,14 @@ export const geographicAnchors: Record<string,{lat:number;lon:number}> = {
   "yasaka-tower": {
     "lat": 34.9988,
     "lon": 135.7791
+  },
+  "karasemitei": {
+    "lat": 35.0218,
+    "lon": 135.7462
+  },
+  "marutamachi": {
+    "lat": 35.0165,
+    "lon": 135.7596
   }
 };
 export const geographySources = [
@@ -161,5 +169,9 @@ export const geographySources = [
   {
     "title": "叡山電鐵車站與路線",
     "url": "https://eizandensha.co.jp/guide/station/"
+  },
+  {
+    "title": "空蟬庭店家訂位頁與地址",
+    "url": "https://www.tablecheck.com/ja/shops/karasemitei/reserve"
   }
 ];

@@ -204,14 +204,14 @@ export const routes: Route[] = [
       "京都河原町",
       "烏丸"
     ],
-    "duration": "1個站間區間；連同地下鐵與飯店步行安排於19:30–20:30",
+    "duration": "乘車約2分鐘；與地下鐵、步行及候車合計預留60分鐘",
     "official": "https://www.hankyu.co.jp/",
     "color": "#789981",
     "from": "京都河原町駅 京都",
     "to": "烏丸駅 京都",
     "note": "搭乘停靠上述各站的普通列車；月台與車廂依現場看板。",
     "confirmedStops": true,
-    "walk": "烏丸步行轉地下鐵四条；往竹田方向，經五条至京都（2區間），再步行回飯店"
+    "walk": "烏丸出站步行轉地下鐵四条，再往竹田方向至京都"
   },
   {
     "id": "inari-gion",
@@ -231,7 +231,7 @@ export const routes: Route[] = [
     "to": "祇園四条駅 京阪 京都市東山区",
     "official": "https://www.keihan.co.jp/traffic/",
     "confirmedStops": true,
-    "walk": "伏見稻荷大社 → 京阪伏見稲荷站；祇園四条站 → 過四条大橋 → 京都高島屋7樓三嶋亭",
+    "walk": "伏見稻荷大社 → 京阪伏見稲荷站；祇園四条站 → 過四条大橋 → 檸檬牛舌 京都店",
     "note": "京阪伏見稲荷站與JR稲荷站不同；搭停靠以上各站的普通列車，月台依現場看板。"
   },
   {
@@ -251,5 +251,113 @@ export const routes: Route[] = [
     "confirmedStops": true,
     "walk": "七条站出站往西沿七条通，步行約20–25分鐘至hotel androoms Kyoto Shichijo",
     "note": "搭停靠七条的普通列車；晚餐候位較久時，散步及返程可順延。"
+  },
+  {
+    "id": "kawaramachi-karasuma",
+    "name": "阪急京都線",
+    "color": "#789981",
+    "direction": "往大阪梅田方向，烏丸下車",
+    "stations": [
+      "京都河原町",
+      "烏丸"
+    ],
+    "duration": "乘車約2分鐘；與地下鐵及步行合計預留60分鐘",
+    "from": "京都河原町駅 京都",
+    "to": "烏丸駅 京都",
+    "official": "https://www.hankyu.co.jp/",
+    "confirmedStops": true,
+    "walk": "烏丸出站步行轉地下鐵四条，往國際會館方向",
+    "note": "月台與乘車方向依現場電子看板。時間包含必要步行、候車與轉乘安排，不作為固定班次。"
+  },
+  {
+    "id": "shijo-marutamachi",
+    "name": "地下鐵烏丸線・前往空蟬庭",
+    "color": "#789981",
+    "direction": "往國際會館方向，丸太町下車",
+    "stations": [
+      "四条",
+      "烏丸御池",
+      "丸太町"
+    ],
+    "duration": "乘車約4–5分鐘；18:00–19:00含前段阪急及步行",
+    "from": "四条駅 京都",
+    "to": "丸太町駅 京都",
+    "official": "https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/line02.htm",
+    "confirmedStops": true,
+    "walk": "丸太町站往西步行約20分鐘至空蟬庭，19:00–19:30保留入店緩衝",
+    "note": "月台與乘車方向依現場電子看板。時間包含必要步行、候車與轉乘安排，不作為固定班次。"
+  },
+  {
+    "id": "marutamachi-kyoto",
+    "name": "地下鐵烏丸線・回飯店",
+    "color": "#789981",
+    "direction": "往竹田方向，京都下車",
+    "stations": [
+      "丸太町",
+      "烏丸御池",
+      "四条",
+      "五条",
+      "京都"
+    ],
+    "duration": "乘車約8–10分鐘；20:30–21:30含步行與候車",
+    "from": "丸太町駅 京都",
+    "to": "京都駅 京都",
+    "official": "https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/line02.htm",
+    "confirmedStops": true,
+    "walk": "空蟬庭步行約20分鐘至丸太町站；京都站步行回飯店",
+    "note": "月台與乘車方向依現場電子看板。時間包含必要步行、候車與轉乘安排，不作為固定班次。"
+  },
+  {
+    "id": "kyoto-shijo",
+    "name": "地下鐵烏丸線・前往河原町",
+    "color": "#789981",
+    "direction": "往國際會館方向，四条下車",
+    "stations": [
+      "京都",
+      "五条",
+      "四条"
+    ],
+    "duration": "乘車約4分鐘；18:00–19:00含阪急轉乘與步行",
+    "from": "京都駅 京都",
+    "to": "四条駅 京都",
+    "official": "https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/line02.htm",
+    "confirmedStops": true,
+    "walk": "四条站出閘步行轉阪急烏丸",
+    "note": "月台與乘車方向依現場電子看板。時間包含必要步行、候車與轉乘安排，不作為固定班次。"
+  },
+  {
+    "id": "karasuma-kawaramachi",
+    "name": "阪急京都線・前往高島屋",
+    "color": "#789981",
+    "direction": "往京都河原町方向，終點下車",
+    "stations": [
+      "烏丸",
+      "京都河原町"
+    ],
+    "duration": "乘車約2分鐘；全程含地下鐵及步行預留60分鐘",
+    "from": "烏丸駅 京都",
+    "to": "京都河原町駅 京都",
+    "official": "https://www.hankyu.co.jp/",
+    "confirmedStops": true,
+    "walk": "京都河原町站地下直通京都高島屋，三嶋亭在7樓",
+    "note": "月台與乘車方向依現場電子看板。時間包含必要步行、候車與轉乘安排，不作為固定班次。"
+  },
+  {
+    "id": "shijo-kyoto",
+    "name": "地下鐵烏丸線・返回京都站",
+    "color": "#789981",
+    "direction": "往竹田方向，京都下車",
+    "stations": [
+      "四条",
+      "五条",
+      "京都"
+    ],
+    "duration": "乘車約4分鐘；20:30–21:30含阪急轉乘與飯店步行",
+    "from": "四条駅 京都",
+    "to": "京都駅 京都",
+    "official": "https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/line02.htm",
+    "confirmedStops": true,
+    "walk": "京都站出站步行回hotel androoms Kyoto Shichijo",
+    "note": "月台與乘車方向依現場電子看板。時間包含必要步行、候車與轉乘安排，不作為固定班次。"
   }
 ];

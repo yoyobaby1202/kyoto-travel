@@ -212,5 +212,44 @@ export const routes: Route[] = [
     "note": "搭乘停靠上述各站的普通列車；月台與車廂依現場看板。",
     "confirmedStops": true,
     "walk": "烏丸步行轉地下鐵四条；往竹田方向，經五条至京都（2區間），再步行回飯店"
+  },
+  {
+    "id": "inari-gion",
+    "name": "京阪本線・普通",
+    "color": "#7d9b81",
+    "direction": "往出町柳方向，祇園四条下車",
+    "stations": [
+      "伏見稲荷",
+      "鳥羽街道",
+      "東福寺",
+      "七条",
+      "清水五条",
+      "祇園四条"
+    ],
+    "duration": "乘車約10–15分鐘；16:30–17:30含步行、候車與到店緩衝",
+    "from": "伏見稲荷駅 京阪 京都市伏見区",
+    "to": "祇園四条駅 京阪 京都市東山区",
+    "official": "https://www.keihan.co.jp/traffic/",
+    "confirmedStops": true,
+    "walk": "伏見稻荷大社 → 京阪伏見稲荷站；祇園四条站 → 過四条大橋 → 京都高島屋7樓三嶋亭",
+    "note": "京阪伏見稲荷站與JR稲荷站不同；搭停靠以上各站的普通列車，月台依現場看板。"
+  },
+  {
+    "id": "gion-shichijo",
+    "name": "京阪本線・普通・回飯店",
+    "color": "#7d9b81",
+    "direction": "往淀屋橋方向，七条下車",
+    "stations": [
+      "祇園四条",
+      "清水五条",
+      "七条"
+    ],
+    "duration": "乘車約5–7分鐘；20:00–21:00含步行與候車",
+    "from": "祇園四条駅 京阪 京都市東山区",
+    "to": "七条駅 京阪 京都市東山区",
+    "official": "https://www.keihan.co.jp/traffic/",
+    "confirmedStops": true,
+    "walk": "七条站出站往西沿七条通，步行約20–25分鐘至hotel androoms Kyoto Shichijo",
+    "note": "搭停靠七条的普通列車；晚餐候位較久時，散步及返程可順延。"
   }
 ];

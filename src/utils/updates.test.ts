@@ -6,7 +6,13 @@ import { restaurants } from "../data/places";
 test("晚餐日期分店、時間與原有固定轉乘正確", () => {
   const dinner = (day: number) =>
     days[day - 1].events.find((e) => e.meal && e.title.includes("晚餐"))!;
-  assert.equal(dinner(1).restaurant, undefined);
+  assert.equal(dinner(1).restaurant, "mishima");
+  assert.equal(dinner(1).start, "17:30");
+  assert.equal(dinner(1).status, "預計");
+  assert.equal(restaurants.find(r => r.id === "mishima")!.reservationPolicy, "walk-in-only");
+  assert.equal(days[0].events.find(e=>e.id === "1-7")!.end, "16:30");
+  assert.equal(days[0].events.find(e=>e.id === "1-10")!.place, "gion");
+  assert.equal(days[0].events.at(-1)!.place, "hotel");
   assert.equal(dinner(2).restaurant, "hiro");
   assert.equal(dinner(2).start, "19:15");
   assert.equal(dinner(2).end, "21:15");

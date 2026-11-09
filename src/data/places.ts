@@ -414,6 +414,24 @@ export const restaurants: Restaurant[] = [
     "hours": "17:00–23:00",
     "lastOrder": "餐點22:00／飲品22:30",
     "alternative": "其他已選定餐廳"
+  },
+  {
+    "id": "mishima",
+    "name": "三嶋亭 高島屋店",
+    "ja": "三嶋亭 京都高島屋店",
+    "query": "三嶋亭 京都高島屋店 京都市下京区真町52 京都高島屋7階",
+    "address": "〒600-8520 京都府京都市下京区四条通河原町西入真町52 京都高島屋7樓 京回廊",
+    "phone": "075-252-7800",
+    "official": "https://www.takashimaya.co.jp/kyoto/specialtystores/restaurant/shop/70011",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%89%E5%B6%8B%E4%BA%AD%20%E4%BA%AC%E9%83%BD%E9%AB%98%E5%B3%B6%E5%B1%8B%E5%BA%97%20%E4%BA%AC%E9%83%BD%E5%B8%82%E4%B8%8B%E4%BA%AC%E5%8C%BA%E7%9C%9F%E7%94%BA52%207%E9%9A%8E",
+    "description": "京都高島屋7樓的壽喜燒料理，不接受訂位，現場候位。",
+    "duration": "約90分鐘，候位時間另依現場",
+    "art": "food",
+    "dish": "壽喜燒",
+    "hours": "11:00–21:30",
+    "lastOrder": "20:00（最終入店與最後點餐）",
+    "reservationPolicy": "walk-in-only",
+    "alternative": "京都高島屋7樓其他營業中的餐廳"
   }
 ];
 export const findPlace = (id?: string) => [...places, ...restaurants].find(p=>p.id===id);

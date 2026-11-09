@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen",
+  "asset": "public/illustrations/journey/day-1.webp",
+  "prompt": "Precisely edit the existing Kyoto Day1 transport illustration. Keep EXACT 1200x1550 canvas and ALL illustrations, airport locations, coastlines, river, Kyoto station, hotel, rail route geometry, dotted Taiwan-to-KIX flight path unchanged (animated plane overlays rely on exact path pixels). Change ONLY the two bottom information lines inside the rounded footer box: '伏見稲荷15:30–17:00' becomes '伏見稻荷15:30–16:30'; last '晚餐' line becomes '17:30 三嶋亭 高島屋店 → 祇園散步 → 飯店' in legible dark text fitting the footer width. Add small second line below it '現場候位・不接受訂位' if comfortable; otherwise keep just updated single line. Keep all other footer facts exact IT210, HARUKA, JR 奈良線, existing fonts, style and colors. No new title, no rearranging art, no airplane sprite, no other new objects. Preserve all geography and paths.",
+  "official": "https://www.takashimaya.co.jp/kyoto/specialtystores/restaurant/shop/70011",
+  "schedule": "12/10 17:30到店現場候位，19:00起祇園散步，20:00起回飯店；候位較久則散步與返程順延。",
+  "reservationPolicy": "不接受訂位",
+  "adjustment": "伏見稻荷改15:30–16:30，留16:30–17:30京阪與步行移動。"
+}

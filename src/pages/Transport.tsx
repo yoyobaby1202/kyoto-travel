@@ -20,10 +20,10 @@ export function Transport() {
   const [zoom, setZoom] = useState(false);
   const [scale, setScale] = useState(1);
   const selected = days[day - 1];
-  const hiroDinner = selected.events.find(e => e.restaurant === "hiro");
+  const dinner = selected.events.find(e => e.restaurant);
   const ids =
     day === 1
-      ? ["haruka-out", "nara"]
+      ? ["haruka-out", "nara", "inari-gion", "gion-shichijo"]
       : day === 2
         ? ["sagano", "torokko"]
         : day === 3
@@ -89,11 +89,11 @@ export function Transport() {
             <a href="https://rurikoin.komyoji.com/access/" target="_blank" rel="noreferrer">琉璃光院官方交通 ↗</a>
           </p>
         )}
-        {day === 2 && hiroDinner && (
+        {(day === 1 || day === 2) && dinner && (
           <section className="note">
-            <h3>{hiroDinner.title}</h3>
-            <p>{hiroDinner.start}–{hiroDinner.end} · {hiroDinner.note}</p>
-            <MealCard slotId={hiroDinner.id} preset="hiro" />
+            <h3>{dinner.title}</h3>
+            <p>{dinner.start}–{dinner.end} · {dinner.note}</p>
+            <MealCard slotId={dinner.id} preset={dinner.restaurant} />
           </section>
         )}
         <div className="map-stop-links">

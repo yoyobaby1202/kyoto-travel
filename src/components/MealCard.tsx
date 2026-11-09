@@ -9,7 +9,7 @@ export function MealCard({
   preset,
 }: {
   slotId: string;
-  preset?: "lemon" | "hiro";
+  preset?: string;
 }) {
   const [settings, save, ready, error] = useLocal<Record<string, MealSetting>>(
     "meal-settings",
@@ -20,6 +20,8 @@ export function MealCard({
   const [busy, setBusy] = useState(false);
   const current = settings[slotId];
   const restaurant = restaurants.find((r) => r.id === preset);
+  const walkInOnly = restaurant?.reservationPolicy === "walk-in-only" &&
+    (!current || current.name.includes("三嶋亭"));
   const defaults = restaurant
     ? {
         name: restaurant.name,
@@ -44,6 +46,8 @@ export function MealCard({
         status: String(f.get("status")) as MealSetting["status"],
         note: String(f.get("note")),
       });
+      if (walkInOnly && meal.status === "已訂位")
+        throw new Error("三嶋亭高島屋店不接受訂位，請選擇用餐安排或已完成用餐。");
       setBusy(true);
       await save({ ...settings, [slotId]: meal });
       setEditing(false);
@@ -59,7 +63,8 @@ export function MealCard({
       {name && (
         <div className="meal-name">
           <strong>{name}</strong>
-          {current && ["已訂位", "已完成用餐"].includes(current.status) && (
+          {walkInOnly && <span>現場候位・不接受訂位</span>}
+          {current && (!walkInOnly || current.status === "已完成用餐") && ["已訂位", "已完成用餐"].includes(current.status) && (
             <span>{current.status}</span>
           )}
         </div>
@@ -162,7 +167,7 @@ export function MealCard({
           <label>
             訂位狀態
             <select name="status" defaultValue={current?.status || "預計前往"}>
-              {["尚未決定", "預計前往", "已訂位", "已完成用餐"].map((s) => (
+              {["尚未決定", "預計前往", "已訂位", "已完成用餐"].filter(s => !walkInOnly || s !== "已訂位").map((s) => (
                 <option key={s} value={s}>
                   {s === "尚未決定"
                     ? "自訂餐廳"

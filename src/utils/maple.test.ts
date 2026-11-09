@@ -27,10 +27,10 @@ test("畫面只在桃園起飛與返抵桃園使用台灣時間，內部日本�
       }
     }
 });
-test("保留檸檬牛舌及弘燒肉，其他已選餐廳改為用餐時段", () => {
+test("已選餐廳與每日用餐時段保持一致", () => {
   assert.deepEqual(
     restaurants.map((r) => r.id),
-    ["lemon", "hiro"],
+    ["lemon", "hiro", "mishima"],
   );
   for (const day of days)
     for (const event of day.events) {
@@ -38,7 +38,7 @@ test("保留檸檬牛舌及弘燒肉，其他已選餐廳改為用餐時段", ()
         assert.match(event.title, /午餐|晚餐/);
         assert.ok(!event.place || event.place === "airport");
         assert.ok(
-          !event.restaurant || ["lemon", "hiro"].includes(event.restaurant),
+          !event.restaurant || ["lemon", "hiro", "mishima"].includes(event.restaurant),
         );
       }
     }

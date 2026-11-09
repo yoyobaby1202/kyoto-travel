@@ -80,7 +80,7 @@ export const days: Day[] = [
       {
         "id": "1-7",
         "start": "15:30",
-        "end": "17:00",
+        "end": "16:30",
         "title": "伏見稻荷大社・千本鳥居",
         "mode": "visit",
         "place": "fushimi",
@@ -89,34 +89,50 @@ export const days: Day[] = [
       },
       {
         "id": "1-8",
-        "start": "17:00",
-        "end": "18:00",
-        "title": "前往晚餐・交通緩衝",
+        "start": "16:30",
+        "end": "17:30",
+        "title": "京阪伏見稲荷 → 祇園四条・步行至高島屋",
         "mode": "train",
-        "note": "分店未定，路線及車程待確認，不建立餐廳導航。",
+        "note": "大社步行至京阪伏見稲荷站，搭往出町柳方向的普通列車至祇園四条；過四条大橋前往京都高島屋7樓，含候車、步行與到店緩衝。",
         "status": "預計",
-        "fixed": false
+        "fixed": false,
+        "place": "mishima",
+        "route": "inari-gion"
       },
       {
-        "id": "1-9",
-        "start": "18:00",
-        "end": "19:30",
-        "title": "晚餐",
+        "id": "1-mishima-takashimaya",
+        "start": "17:30",
+        "end": "19:00",
+        "title": "三嶋亭 高島屋店・晚餐",
         "mode": "food",
-        "note": "晚餐待定，找到餐廳後可設定導航。",
-        "status": "待確認",
+        "note": "17:30到店現場候位，這個時段含候位與用餐安排；不接受訂位。若候位較久，餐後祇園散步順延。",
+        "status": "預計",
         "fixed": false,
-        "meal": true
+        "meal": true,
+        "restaurant": "mishima"
       },
       {
         "id": "1-10",
-        "start": "19:30",
-        "end": "20:30",
-        "title": "京都站散步・回飯店",
+        "start": "19:00",
+        "end": "20:00",
+        "title": "餐後祇園散步・花見小路",
         "mode": "walk",
-        "place": "hotel",
+        "place": "gion",
         "status": "預計",
-        "fixed": false
+        "fixed": false,
+        "note": "由高島屋步行過四条大橋前往祇園，沿花見小路散步；留意私人巷道及攝影標示。"
+      },
+      {
+        "id": "1-hotel-after-gion",
+        "start": "20:00",
+        "end": "21:00",
+        "title": "祇園 → 七条・返回飯店",
+        "mode": "train",
+        "status": "預計",
+        "fixed": false,
+        "place": "hotel",
+        "route": "gion-shichijo",
+        "note": "京阪祇園四条搭往淀屋橋方向、停靠七条的普通列車；下車後往西步行約20–25分鐘回飯店，全程含步行與候車預留60分鐘。"
       }
     ]
   },

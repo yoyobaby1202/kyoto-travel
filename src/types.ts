@@ -20,6 +20,7 @@ export interface Restaurant extends Place {
   hours: string;
   lastOrder: string;
   reservation?: string;
+  reservationPolicy?: "walk-in-only";
   alternative: string;
   price?: string;
 }

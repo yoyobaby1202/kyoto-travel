@@ -78,11 +78,7 @@ export function DailyTimeline({
               {event.meal ? (
                 <MealCard
                   slotId={event.id}
-                  preset={
-                    event.restaurant === "lemon" || event.restaurant === "hiro"
-                      ? event.restaurant
-                      : undefined
-                  }
+                  preset={event.restaurant}
                 />
               ) : (
                 <div className="md-stop-actions">

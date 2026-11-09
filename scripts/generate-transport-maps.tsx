@@ -237,21 +237,21 @@ svg += text(579, 731, "步行回 JR 站", 21, C.walk, "middle");
 svg += route("M954 1180V1325", C.walk, "walk", true, 5);
 svg +=
   text(635, 1250, "17:30–18:30 返回京都", 24, "#876b51") +
-  text(635, 1287, "18:30–19:00 步行＋緩衝", 24, "#876b51");
+  text(635, 1287, "18:30–19:15 步行＋緩衝", 24, "#876b51");
 svg += route("M651 1384H485", C.walk, "walk", true, 5);
 svg +=
   rect(650, 1330, 480, 112, "#f0d4bc", 22) +
   `<g transform="translate(671 1358)" stroke="${C.ink}" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="8" width="48" height="39" rx="10" fill="#fffcf6"/><path d="M8 18h34M8 26h34M8 34h34m-24-19v24m9-24v24m9-24v24" stroke="#cbb99e" stroke-width="1.3"/><path d="M14 17q8-6 14-3l7 10q-4 7-14 4l-9-4Z" fill="#c97962"/><path d="m18 20 6 4m1-6 5 4M13 49v5m24-5v5m-21-51 2-6m11 6 2-5"/></g>` +
-  text(735, 1370, "弘燒肉 京都站前店", 29) +
-  text(735, 1402, "19:00–20:30 · 京の焼肉処 弘 京都駅前店", 18) +
-  text(735, 1427, "預計用餐・尚未確認訂位", 20, "#9a6848");
+  text(735, 1370, "弘燒肉 八条口店", 29) +
+  text(735, 1402, "19:15–21:15 · 京の焼肉処 弘 八条口店", 18) +
+  text(735, 1427, "成人2位", 20, "#9a6848");
 svg +=
   rect(80, 1330, 402, 112, "#f5e9d4", 22) +
   icon(Hotel, 105, 1360, 44) +
   text(170, 1373, "androoms 京都七条", 28) +
   text(170, 1410, "返回飯店・自由活動", 23, "#8c745d");
 svg +=
-  text(564, 1348, "20:30後", 22, C.walk, "middle") +
+  text(564, 1348, "21:15後", 22, C.walk, "middle") +
   text(564, 1428, "步行", 22, C.walk, "middle");
 svg += text(
   60,

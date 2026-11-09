@@ -284,33 +284,36 @@ export const days: Day[] = [
       {
         "id": "2-hiro-walk",
         "start": "18:30",
-        "end": "19:00",
-        "title": "步行前往弘燒肉・用餐緩衝",
+        "end": "19:15",
+        "title": "步行前往弘燒肉 八条口店・用餐緩衝",
         "mode": "walk",
         "status": "預計",
         "fixed": false,
-        "place": "hiro"
+        "place": "hiro",
+        "note": "京都站往南側八條口，再步行至八条口店；預留站內穿越與報到時間。"
       },
       {
-        "id": "2-14",
-        "start": "19:00",
-        "end": "20:30",
-        "title": "弘燒肉 京都站前店・晚餐",
+        "id": "2-hiro-hachijoguchi",
+        "start": "19:15",
+        "end": "21:15",
+        "title": "弘燒肉 八条口店・晚餐",
         "mode": "food",
-        "status": "預計",
+        "status": "已確認",
         "fixed": true,
         "restaurant": "hiro",
-        "meal": true
+        "meal": true,
+        "note": "2位成人｜19:15入店・21:15離店（日本時間）。"
       },
       {
         "id": "2-15",
-        "start": "20:30",
-        "end": "21:00",
+        "start": "21:15",
+        "end": "21:45",
         "title": "返回飯店休息",
         "mode": "walk",
         "status": "預計",
         "fixed": false,
-        "place": "hotel"
+        "place": "hotel",
+        "note": "用餐後由八條口側返回京都站北側的飯店，預留約30分鐘步行。"
       }
     ]
   },

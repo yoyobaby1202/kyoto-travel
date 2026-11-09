@@ -11,6 +11,7 @@ import { findPlace } from "../data/places";
 import { routes } from "../data/transport";
 import { TrainRouteCard } from "../components/TrainRouteCard";
 import { MapLink } from "../components/Common";
+import { MealCard } from "../components/MealCard";
 export function Transport() {
   const [params, setParams] = useSearchParams();
   const day = selectedTripDay(params.toString());
@@ -19,6 +20,7 @@ export function Transport() {
   const [zoom, setZoom] = useState(false);
   const [scale, setScale] = useState(1);
   const selected = days[day - 1];
+  const hiroDinner = selected.events.find(e => e.restaurant === "hiro");
   const ids =
     day === 1
       ? ["haruka-out", "nara"]
@@ -86,6 +88,13 @@ export function Transport() {
             出町柳請搭「八瀬比叡山口行」。回程京阪選停靠清水五条的普通列車，出站後預留上坡步行與午餐時間。
             <a href="https://rurikoin.komyoji.com/access/" target="_blank" rel="noreferrer">琉璃光院官方交通 ↗</a>
           </p>
+        )}
+        {day === 2 && hiroDinner && (
+          <section className="note">
+            <h3>{hiroDinner.title}</h3>
+            <p>{hiroDinner.start}–{hiroDinner.end} · {hiroDinner.note}</p>
+            <MealCard slotId={hiroDinner.id} preset="hiro" />
+          </section>
         )}
         <div className="map-stop-links">
           {selected.events

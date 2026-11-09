@@ -1,0 +1,14 @@
+{
+  "tool": "built-in image_gen",
+  "asset": "public/illustrations/arashiyama/background.webp",
+  "prompt": "Precisely edit this existing Kyoto transport illustration. Preserve EXACT portrait canvas size1019x1543, all content, header, station positions, paths, river, track geometry, train and boat animation registration, color, style. ONLY update the bottom peach dinner strip (currently reads 弘焼肉 京都駅前店 19:00–20:30): replace its text with exact '弘燒肉 八条口店 19:15–21:15・成人2位'. Fit comfortably with clear dark lettering. Do not mention 京都駅前店 anywhere. Do not change any other text including train09:02–09:25 and boat11:00–13:00. Do not add trains or boat sprites. Keep all other pixels/layout as close as possible. No extra badges, booking codes or personal data.",
+  "date": "2026-11-09",
+  "dinner": {
+    "day": "2026-12-11",
+    "restaurant": "京の焼肉処 弘 八条口店",
+    "start": "19:15",
+    "end": "21:15",
+    "adults": 2
+  },
+  "official": "https://yakiniku-hiro.com/shop/hachijoguchi.php"
+}

@@ -20,5 +20,7 @@ test("公開文案移除不確定提示，但不新增確認狀態或改動訂�
     assert.doesNotMatch(display, /待核對|待確認|待定|尚未|未訂票|預計|目標/);
     assert.doesNotMatch(display, /已訂位|已確認/);
   }
-  assert.equal(days[1].events.find((e) => e.id === "2-4")!.status, "待確認");
+  assert.equal(days[1].events.find((e) => e.id === "2-4")!.status, "已確認");
+  assert.equal(days[1].events.find((e) => e.id === "2-4")!.reserved, true);
+  assert.equal(days[0].events.find((e) => e.id === "1-3")!.status, "待確認");
 });

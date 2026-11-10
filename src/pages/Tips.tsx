@@ -51,6 +51,7 @@ export function Tips() {
                   }
                 />
                 <span>{item}</span>
+                {["小火車車票", "保津川遊船"].includes(item) && <span className="status confirmed">已訂位</span>}
               </label>
             ))}
           </section>

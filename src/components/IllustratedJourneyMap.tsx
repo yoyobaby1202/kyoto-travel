@@ -105,6 +105,14 @@ export function IllustratedJourneyMap({
       </desc>
       <image href={`${base}day-${day}.webp`} width="1200" height="1550" />
       {day === 1 && (
+        <g aria-label="19:00檸檬牛舌，2人已訂位，餐後祇園散步再回飯店">
+          <rect x="175" y="1457" width="620" height="48" rx="8" fill="#f9ebde" />
+          <text x="190" y="1492" fill="#493c35" fontSize="29" fontWeight="600">
+            19:00 檸檬牛舌・已訂位 → 祇園 → 飯店
+          </text>
+        </g>
+      )}
+      {day === 1 && (
         <g transform="translate(1130 70)">
           <text x="0" y="0" textAnchor="middle" fill="#493c35" fontSize="26">
             北

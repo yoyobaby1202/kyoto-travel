@@ -100,21 +100,43 @@ export const days: Day[] = [
         "route": "inari-gion"
       },
       {
-        "id": "1-lemon-dinner",
+        "id": "1-kawaramachi-free",
         "start": "17:30",
+        "end": "18:30",
+        "title": "河原町自由散步・逛街",
+        "mode": "walk",
+        "place": "kawaramachi",
+        "status": "預計",
+        "fixed": false
+      },
+      {
+        "id": "1-lemon-checkin",
+        "start": "18:30",
         "end": "19:00",
-        "title": "檸檬牛舌 京都店・晚餐",
-        "mode": "food",
-        "note": "17:30–19:00安排用餐，餐後步行至祇園散步。",
+        "title": "前往檸檬牛舌・入店緩衝",
+        "mode": "walk",
+        "place": "lemon",
         "status": "預計",
         "fixed": false,
+        "note": "19:00訂位，預留步行與準時入店時間。"
+      },
+      {
+        "id": "1-lemon-dinner",
+        "start": "19:00",
+        "end": "20:30",
+        "title": "檸檬牛舌 京都店・晚餐",
+        "mode": "food",
+        "note": "已訂位・2人・19:00入店。用餐暫留90分鐘，餐後祇園散步再回飯店。",
+        "status": "已確認",
+        "fixed": true,
         "meal": true,
-        "restaurant": "lemon"
+        "restaurant": "lemon",
+        "reserved": true
       },
       {
         "id": "1-10",
-        "start": "19:00",
-        "end": "20:00",
+        "start": "20:30",
+        "end": "21:00",
         "title": "餐後祇園散步・花見小路",
         "mode": "walk",
         "place": "gion",
@@ -124,8 +146,8 @@ export const days: Day[] = [
       },
       {
         "id": "1-hotel-after-gion",
-        "start": "20:00",
-        "end": "21:00",
+        "start": "21:00",
+        "end": "22:00",
         "title": "祇園 → 七条・返回飯店",
         "mode": "train",
         "status": "預計",
@@ -185,11 +207,12 @@ export const days: Day[] = [
         "end": "09:25",
         "title": "嵯峨野觀光小火車 1 號",
         "mode": "train",
-        "status": "待確認",
+        "status": "已確認",
         "fixed": true,
         "place": "kameoka",
         "route": "torokko",
-        "note": "トロッコ嵯峨 → トロッコ亀岡。"
+        "note": "已訂位・09:02トロッコ嵯峨出發，09:25抵達トロッコ亀岡。",
+        "reserved": true
       },
       {
         "id": "2-6",
@@ -229,10 +252,11 @@ export const days: Day[] = [
         "end": "13:00",
         "title": "保津川遊船・龜岡 → 嵐山",
         "mode": "boat",
-        "status": "預計",
+        "status": "已確認",
         "fixed": true,
         "place": "boat",
-        "note": "約2小時，航程依河況與天氣調整。"
+        "note": "已訂位・11:00出發。約2小時，實際航程依河況與天氣調整。",
+        "reserved": true
       },
       {
         "id": "2-9",
@@ -318,7 +342,8 @@ export const days: Day[] = [
         "fixed": true,
         "restaurant": "hiro",
         "meal": true,
-        "note": "2位成人｜19:15入店・21:15離店（日本時間）。"
+        "note": "2位成人｜19:15入店・21:15離店（日本時間）。",
+        "reserved": true
       },
       {
         "id": "2-15",
@@ -504,7 +529,8 @@ export const days: Day[] = [
         "fixed": true,
         "restaurant": "karasemitei",
         "meal": true,
-        "note": "已訂位・2人・僅訂座位。餐費當天現場支付；店家座位使用原則1小時，依現場安排。"
+        "note": "已訂位・2人・僅訂座位。餐費當天現場支付；店家座位使用原則1小時，依現場安排。",
+        "reserved": true
       },
       {
         "id": "3-hotel-after-karasemitei",

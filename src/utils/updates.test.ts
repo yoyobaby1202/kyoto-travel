@@ -7,8 +7,8 @@ test("晚餐日期分店、時間與原有固定轉乘正確", () => {
   const dinner = (day: number) =>
     days[day - 1].events.find((e) => e.meal && e.title.includes("晚餐"))!;
   assert.equal(dinner(1).restaurant, "lemon");
-  assert.equal(dinner(1).start, "17:30");
-  assert.equal(dinner(1).status, "預計");
+  assert.equal(dinner(1).start, "19:00");
+  assert.equal(dinner(1).status, "已確認");
   assert.equal(restaurants.find(r => r.id === "mishima")!.reservationPolicy, "walk-in-only");
   assert.equal(days[0].events.find(e=>e.id === "1-7")!.end, "16:30");
   assert.equal(days[0].events.find(e=>e.id === "1-10")!.place, "gion");
@@ -44,6 +44,7 @@ test("晚餐日期分店、時間與原有固定轉乘正確", () => {
   const train = days[1].events.find((e) => e.id === "2-4")!;
   assert.equal(train.start, "09:02");
   assert.equal(train.end, "09:25");
+  for (const e of [dinner(1), dinner(2), dinner(3), train, days[1].events.find(e=>e.id === "2-8")!]) { assert.equal(e.reserved, true); assert.equal(e.status, "已確認"); }
   assert.equal(days[1].events.find((e) => e.id === "2-6")!.start, "09:25");
 });
 test("五張交通圖具有離線字型且小火車位於軌道上", () => {

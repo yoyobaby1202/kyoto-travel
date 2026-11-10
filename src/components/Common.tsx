@@ -67,13 +67,13 @@ export function TransportBadge({ mode }: { mode: Mode }) {
     </span>
   );
 }
-export function StatusBadge({ status }: { status: Status }) {
+export function StatusBadge({ status, reserved = false }: { status: Status; reserved?: boolean }) {
   if (status !== "已確認") return null;
   return (
     <span
       className={`status ${status === "已確認" ? "confirmed" : status === "待確認" ? "pending" : ""}`}
     >
-      {status}
+      {reserved ? "已訂位" : status}
     </span>
   );
 }

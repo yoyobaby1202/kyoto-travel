@@ -56,7 +56,7 @@ export const routes: Route[] = [
     "from": "トロッコ嵯峨駅",
     "to": "トロッコ亀岡駅",
     "official": "https://www.sagano-kanko.co.jp/",
-    "note": "トロッコ嵯峨出發，經トロッコ嵐山、トロッコ保津峡，抵達トロッコ亀岡。",
+    "note": "已訂位・09:02トロッコ嵯峨出發，經トロッコ嵐山、トロッコ保津峡，抵達トロッコ亀岡。",
     "confirmedStops": true
   },
   {
@@ -244,7 +244,7 @@ export const routes: Route[] = [
       "清水五条",
       "七条"
     ],
-    "duration": "乘車約5–7分鐘；20:00–21:00含步行與候車",
+    "duration": "乘車約5–7分鐘；21:00–22:00含步行與候車",
     "from": "祇園四条駅 京阪 京都市東山区",
     "to": "七条駅 京阪 京都市東山区",
     "official": "https://www.keihan.co.jp/traffic/",

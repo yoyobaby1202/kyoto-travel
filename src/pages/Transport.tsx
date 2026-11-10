@@ -68,7 +68,7 @@ export function Transport() {
         ))}
         {day === 2 && (
           <p className="note">
-            小火車龜岡站 →
+            小火車09:02–09:25、保津川遊船11:00出發均已訂位。小火車龜岡站 →
             保津川遊船乘船場，搭乘39系統接駁巴士，09:25–10:00安排轉乘，11:00登船。乘車位置及運行資訊請見官方接駁說明。
             <a
               href="https://www.keihankyotokotsu.jp/bustimetable/timetable.php?no=1&stop_cd=2050"

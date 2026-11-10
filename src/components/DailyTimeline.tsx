@@ -60,11 +60,12 @@ export function DailyTimeline({
                 <div className="md-transport-title">
                   <TransportBadge mode={event.mode} />
                   <h3>{event.title}</h3>
+                  <StatusBadge status={event.status} reserved={event.reserved} />
                 </div>
               ) : (
                 <div className="stop-heading">
                   <h3>{event.title}</h3>
-                  <StatusBadge status={event.status} />
+                  <StatusBadge status={event.status} reserved={event.reserved} />
                 </div>
               )}
               <p className="event-time">

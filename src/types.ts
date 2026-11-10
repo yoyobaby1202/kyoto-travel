@@ -36,6 +36,7 @@ export interface Event {
   connections?: string[];
   note?: string;
   fixed?: boolean;
+  reserved?: boolean;
   restaurant?: string;
   done?: boolean;
   meal?: boolean;

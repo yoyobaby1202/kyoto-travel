@@ -7,7 +7,8 @@ test("晚餐日期分店、時間與原有固定轉乘正確", () => {
   const dinner = (day: number) =>
     days[day - 1].events.find((e) => e.meal && e.title.includes("晚餐"))!;
   assert.equal(dinner(1).restaurant, "lemon");
-  assert.equal(dinner(1).start, "19:00");
+  assert.equal(dinner(1).start, "18:30");
+  assert.equal(dinner(1).end, "20:00");
   assert.equal(dinner(1).status, "已確認");
   assert.equal(restaurants.find(r => r.id === "mishima")!.reservationPolicy, "walk-in-only");
   assert.equal(days[0].events.find(e=>e.id === "1-7")!.end, "16:30");
@@ -46,6 +47,15 @@ test("晚餐日期分店、時間與原有固定轉乘正確", () => {
   assert.equal(train.end, "09:25");
   for (const e of [dinner(1), dinner(2), dinner(3), train, days[1].events.find(e=>e.id === "2-8")!]) { assert.equal(e.reserved, true); assert.equal(e.status, "已確認"); }
   assert.equal(days[1].events.find((e) => e.id === "2-6")!.start, "09:25");
+  const lunch = days[1].events.find(e => e.id === "2-matsugae-lunch")!;
+  assert.equal(lunch.restaurant, "matsugae");
+  assert.equal(lunch.start, "14:00");
+  assert.equal(lunch.reserved, true);
+  assert.equal(lunch.fixed, true);
+  assert.equal(lunch.status, "已確認");
+  const matsugae = restaurants.find(r => r.id === "matsugae")!;
+  assert.equal(matsugae.phone, "075-872-0102");
+  assert.match(new URL(matsugae.mapsUrl!).searchParams.get("query")!, /松ヶ枝.*芒ノ馬場町3/);
 });
 test("五張交通圖具有離線字型且小火車位於軌道上", () => {
   for (let day = 1; day <= 5; day++) {

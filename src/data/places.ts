@@ -450,6 +450,24 @@ export const restaurants: Restaurant[] = [
     "hours": "依店家當日公告",
     "lastOrder": "依店家現場資訊",
     "alternative": "依現場用餐安排"
-  }
+  },
+{
+  "id": "matsugae",
+  "name": "とうふと湯葉 松ヶ枝",
+  "ja": "とうふと湯葉 松ヶ枝",
+  "query": "とうふと湯葉 松ヶ枝 京都市右京区嵯峨天龍寺芒ノ馬場町3",
+  "address": "〒616-8385 京都市右京区嵯峨天龍寺芒ノ馬場町3",
+  "phone": "075-872-0102",
+  "official": "https://yoshimura-gr.com/matsugae/shop/",
+  "reservation": "https://yoyaku.toreta.in/matsugae/",
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%81%86%E3%81%B5%E3%81%A8%E6%B9%AF%E8%91%89%20%E6%9D%BE%E3%83%B6%E6%9E%9D%20%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E8%8A%92%E3%83%8E%E9%A6%AC%E5%A0%B4%E7%94%BA3",
+  "description": "12/11 14:00，2位成人已訂位。位於渡月橋北端西側的豆腐與湯葉料理店。",
+  "duration": "暫留60分鐘，依現場安排",
+  "art": "food",
+  "dish": "湯豆腐、湯葉料理",
+  "hours": "11:00–16:00；週末假日延至16:30，觀光季10:30–17:00，依店家公告",
+  "lastOrder": "依店家當日安排",
+  "alternative": "依現場用餐安排"
+}
 ];
 export const findPlace = (id?: string) => [...places, ...restaurants].find(p=>p.id===id);

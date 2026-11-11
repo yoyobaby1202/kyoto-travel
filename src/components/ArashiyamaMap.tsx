@@ -109,6 +109,14 @@ export function ArashiyamaMap({ animate = true }: { animate?: boolean }) {
         width={art.width}
         height={art.height}
       />
+      <g fill="#493c35">
+        <rect x="830" y="705" width="142" height="26" rx="5" fill="#fff3e7" />
+        <text x="839" y="724" fontSize="20">15:00–15:30</text>
+        <rect x="44" y="1016" width="930" height="61" rx="25" fill="#f9dfbd" />
+        <text x="509" y="1054" textAnchor="middle" fontSize="27" fontWeight="600">
+          14:00 松ヶ枝・午餐・2位已訂位（渡月橋北側）
+        </text>
+      </g>
       <path ref={trainPath} d={art.trainPath} fill="none" stroke="none" />
       <path ref={boatPath} d={art.boatPath} fill="none" stroke="none" />
       <g ref={train} data-vehicle="train" transform={finalTrain}>

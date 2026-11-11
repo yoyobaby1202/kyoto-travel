@@ -102,7 +102,7 @@ export const days: Day[] = [
       {
         "id": "1-kawaramachi-free",
         "start": "17:30",
-        "end": "18:30",
+        "end": "18:00",
         "title": "河原町自由散步・逛街",
         "mode": "walk",
         "place": "kawaramachi",
@@ -111,22 +111,22 @@ export const days: Day[] = [
       },
       {
         "id": "1-lemon-checkin",
-        "start": "18:30",
-        "end": "19:00",
+        "start": "18:00",
+        "end": "18:30",
         "title": "前往檸檬牛舌・入店緩衝",
         "mode": "walk",
         "place": "lemon",
         "status": "預計",
         "fixed": false,
-        "note": "19:00訂位，預留步行與準時入店時間。"
+        "note": "18:30訂位，預留步行與準時入店時間。"
       },
       {
         "id": "1-lemon-dinner",
-        "start": "19:00",
-        "end": "20:30",
+        "start": "18:30",
+        "end": "20:00",
         "title": "檸檬牛舌 京都店・晚餐",
         "mode": "food",
-        "note": "已訂位・2人・19:00入店。用餐暫留90分鐘，餐後祇園散步再回飯店。",
+        "note": "已訂位・2人・18:30入店。用餐暫留90分鐘，餐後祇園散步再回飯店。",
         "status": "已確認",
         "fixed": true,
         "meal": true,
@@ -135,8 +135,8 @@ export const days: Day[] = [
       },
       {
         "id": "1-10",
-        "start": "20:30",
-        "end": "21:00",
+        "start": "20:00",
+        "end": "20:30",
         "title": "餐後祇園散步・花見小路",
         "mode": "walk",
         "place": "gion",
@@ -146,8 +146,8 @@ export const days: Day[] = [
       },
       {
         "id": "1-hotel-after-gion",
-        "start": "21:00",
-        "end": "22:00",
+        "start": "20:30",
+        "end": "21:30",
         "title": "祇園 → 七条・返回飯店",
         "mode": "train",
         "status": "預計",
@@ -259,35 +259,50 @@ export const days: Day[] = [
         "reserved": true
       },
       {
-        "id": "2-9",
-        "start": "13:00",
-        "end": "14:00",
-        "title": "嵐山午餐",
-        "mode": "food",
-        "status": "預計",
-        "fixed": false,
-        "meal": true,
-        "note": "蕎麥麵、湯豆腐或日式定食。"
-      },
-      {
         "id": "2-10",
-        "start": "14:00",
-        "end": "14:30",
-        "title": "渡月橋散步拍照",
+        "start": "13:00",
+        "end": "13:30",
+        "title": "下船緩衝・渡月橋散步拍照",
         "mode": "walk",
         "status": "預計",
         "fixed": false,
-        "place": "bridge"
+        "place": "bridge",
+        "note": "約13:00抵達，實際下船時間依河況；先在渡月橋北側附近散步。"
+      },
+      {
+        "id": "2-matsugae-checkin",
+        "start": "13:30",
+        "end": "14:00",
+        "title": "步行前往松ヶ枝・入店緩衝",
+        "mode": "walk",
+        "status": "預計",
+        "fixed": false,
+        "place": "matsugae",
+        "note": "由渡月橋北側步行至松ヶ枝，14:00準時入店。若遊船延誤，先前往餐廳。"
+      },
+      {
+        "id": "2-matsugae-lunch",
+        "start": "14:00",
+        "end": "15:00",
+        "title": "とうふと湯葉 松ヶ枝・午餐",
+        "mode": "food",
+        "status": "已確認",
+        "reserved": true,
+        "fixed": true,
+        "meal": true,
+        "restaurant": "matsugae",
+        "note": "已訂位・2位成人・14:00入店。用餐暫留60分鐘，結束時間依現場安排。"
       },
       {
         "id": "2-tenryu",
-        "start": "14:30",
+        "start": "15:00",
         "end": "15:30",
         "title": "天龍寺參觀",
         "mode": "visit",
         "status": "預計",
         "fixed": false,
-        "place": "tenryuji"
+        "place": "tenryuji",
+        "note": "含餐後步行，安排庭園重點參觀；若用餐較久，可縮短或略過，保留竹林散步。"
       },
       {
         "id": "2-11",

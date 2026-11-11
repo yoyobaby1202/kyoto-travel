@@ -244,7 +244,7 @@ export const routes: Route[] = [
       "清水五条",
       "七条"
     ],
-    "duration": "乘車約5–7分鐘；21:00–22:00含步行與候車",
+    "duration": "乘車約5–7分鐘；20:30–21:30含步行與候車",
     "from": "祇園四条駅 京阪 京都市東山区",
     "to": "七条駅 京阪 京都市東山区",
     "official": "https://www.keihan.co.jp/traffic/",

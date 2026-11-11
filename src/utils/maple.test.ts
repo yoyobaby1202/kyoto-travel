@@ -30,7 +30,7 @@ test("畫面只在桃園起飛與返抵桃園使用台灣時間，內部日本�
 test("已選餐廳與每日用餐時段保持一致", () => {
   assert.deepEqual(
     restaurants.map((r) => r.id),
-    ["lemon", "hiro", "mishima", "karasemitei"],
+    ["lemon", "hiro", "mishima", "karasemitei", "matsugae"],
   );
   for (const day of days)
     for (const event of day.events) {
@@ -38,7 +38,7 @@ test("已選餐廳與每日用餐時段保持一致", () => {
         assert.match(event.title, /午餐|晚餐/);
         assert.ok(!event.place || event.place === "airport");
         assert.ok(
-          !event.restaurant || ["lemon", "hiro", "mishima", "karasemitei"].includes(event.restaurant),
+          !event.restaurant || ["lemon", "hiro", "mishima", "karasemitei", "matsugae"].includes(event.restaurant),
         );
       }
     }

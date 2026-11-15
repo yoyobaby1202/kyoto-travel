@@ -1,4 +1,5 @@
 import {
+  CarTaxiFront,
   ArrowUpRight,
   Navigation,
   TrainFront,
@@ -19,7 +20,7 @@ export function MapLink({
   origin,
 }: {
   query?: string;
-  mode?: "walking" | "transit";
+  mode?: "walking" | "transit" | "driving";
   children?: React.ReactNode;
   origin?: string;
 }) {
@@ -39,6 +40,7 @@ export function MapLink({
   );
 }
 export const modeIcons = {
+  taxi: CarTaxiFront,
   train: TrainFront,
   walk: Footprints,
   bus: Bus,
@@ -49,6 +51,7 @@ export const modeIcons = {
   hotel: Hotel,
 };
 export const modeNames = {
+  taxi: "計程車",
   train: "電車",
   walk: "步行",
   bus: "巴士",

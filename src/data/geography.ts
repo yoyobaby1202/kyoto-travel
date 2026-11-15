@@ -135,6 +135,22 @@ export const geographicAnchors: Record<string,{lat:number;lon:number}> = {
   "marutamachi": {
     "lat": 35.0165,
     "lon": 135.7596
+  },
+  "shimogamo": {
+    "lat": 35.03889,
+    "lon": 135.7725
+  },
+  "seiken": {
+    "lat": 35.0342,
+    "lon": 135.771
+  },
+  "masugata": {
+    "lat": 35.0301,
+    "lon": 135.7692
+  },
+  "demachiza": {
+    "lat": 35.0304,
+    "lon": 135.7688
   }
 };
 export const geographySources = [

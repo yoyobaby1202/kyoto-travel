@@ -28,7 +28,7 @@ export function DailyTimeline({
         const eventRoutes = [event.route, ...(event.connections || [])]
           .map(id => routes.find(r => r.id === id)).filter(r => r !== undefined);
         const clock = displayTime(event);
-        const transport = ["train", "walk", "bus", "boat", "flight"].includes(
+        const transport = ["taxi", "train", "walk", "bus", "boat", "flight"].includes(
           event.mode,
         );
         const active =
@@ -91,7 +91,7 @@ export function DailyTimeline({
                         mode={
                           event.mode === "train" || event.mode === "bus"
                             ? "transit"
-                            : "walking"
+                            : event.mode === "taxi" ? "driving" : "walking"
                         }
                       >
                         導航

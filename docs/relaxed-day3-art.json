@@ -1,0 +1,11 @@
+{
+  "mode": "built-in image_gen",
+  "asset": "public/illustrations/journey/day-3.webp",
+  "prompt": "Edit this Kyoto watercolor storybook transport map for updated Dec12 itinerary. Preserve same cream paper, warm autumn maple, ink outlines, soft watercolor buildings, portrait 1200x1550, north arrow and rounded frame; no page title. Completely replace old routing and labels (remove Tofukuji, JR Nara, Gion, Kawaramachi, Marutamachi and subway). North-up schematic: androoms Kyoto Shichijo hotel bottom left; Kiyomizu temple bottom right/east with label 清水寺 06:30–07:30; above temple small Sannenzaka/Ninenzaka street, below/left of it Kiyomizu-gojo station on EAST bank river, label 清水五条. Purple Keihan line north from Kiyomizu-gojo along east bank to Demachiyanagi in upper middle labeled 京阪普通・往出町柳・4區間. Yase Hieizanguchi far upper right, Rurikoin immediately south/east of Yase. Green Eizan bidirectional route from Demachiyanagi northeast to Yase, label 叡山本線・7區間・往八瀨／回出町柳. Rurikoin beautiful reflective wooden temple label 琉璃光院 10:00–11:30. Shimogamo shrine red torii and wooded Tadasu forest north of Demachiyanagi, label 下鴨神社・糺之森 14:00–15:30. Small restaurant with hamburger/ebi plate near south approach of Shimogamo north of Demachiyanagi label 生研會館 午餐12:30–13:30. On west side of river opposite Demachiyanagi draw small covered shopping arcade label 出町桝形商店街 16:00–17:00, coffee/books shop label 咖啡休息17:00–18:00. Karasemitei left/west and south of Demachiyanagi, tonkatsu restaurant label 空蟬庭19:30・2位已訂位. Brown walking dots connecting north cluster Demachi→restaurant→shrine/forest→shopping→cafe, no false train line. Taxi dashed ochre arrows hotel→Kiyomizu label06:00計程車 and cafe→Karasemitei label18:30計程車 and restaurant→hotel label餐後計程車. Keep geography honest but schematic and space labels with no overlap. Footer exact text: 06:00飯店出發｜12:30生研會館｜19:30空蟬庭已訂位. Do not include private booking IDs or personal info. No animation or sprites baked into image.",
+  "sources": [
+    "https://rurikoin.komyoji.com/",
+    "https://www.shimogamo-jinja.or.jp/access/access.html",
+    "https://tabelog.com/kyoto/A2601/A260302/26001763/"
+  ],
+  "note": "No private booking IDs or contacts included."
+}

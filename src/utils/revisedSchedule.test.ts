@@ -4,10 +4,16 @@ import { days } from "../data/itinerary";
 import { routes } from "../data/transport";
 test("12/11至12/13核心時段、旅團日期與轉乘資料同步", () => {
   const find=(day:number,id:string)=>days[day-1].events.find(e=>e.id===id)!;
-  for(const [day,id,start,end] of [[2,"2-4","09:02","09:25"],[2,"2-8","11:00","13:00"],[2,"2-hiro-hachijoguchi","19:15","21:15"],[3,"ruri-visit","10:00","11:30"],[3,"ruri-kiyomizu","13:30","15:00"],[3,"3-karasemitei-dinner","19:30","20:30"]] as const){
+  for(const [day,id,start,end] of [[2,"2-4","09:02","09:25"],[2,"2-8","11:00","13:00"],[2,"2-hiro-hachijoguchi","19:15","21:15"],[3,"3-karasemitei-dinner","19:30","20:30"]] as const){
     const e=find(day,id); assert.equal(e.start,start);assert.equal(e.end,end);assert.equal(e.fixed,true);
   }
-  assert.match(days[2].title,/琉璃光院/);
+  assert.match(days[2].title,/清水寺.*琉璃光院.*下鴨/);
+  assert.equal(find(3,"ruri-kiyomizu").start,"06:30");
+  assert.equal(find(3,"ruri-visit").start,"10:00");
+  assert.equal(find(3,"relaxed-seiken-lunch").start,"12:30");
+  assert.equal(find(3,"relaxed-seiken-lunch").status,"預計");
+  assert.equal(find(3,"relaxed-taxi-kiyomizu").mode,"taxi");
+  assert.ok(!days[2].events.some(e=>e.place === "gion" || e.place === "kawaramachi"));
   assert.match(days[3].title,/天橋立.*伊根舟屋/);
   assert.equal(find(4,"3-3").end,"09:00");
   assert.equal(find(4,"3-6").end,"18:00");

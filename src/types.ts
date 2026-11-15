@@ -1,5 +1,5 @@
 export type Mode =
-  "train" | "walk" | "bus" | "boat" | "flight" | "food" | "visit" | "hotel";
+  "taxi" | "train" | "walk" | "bus" | "boat" | "flight" | "food" | "visit" | "hotel";
 export type Status = "已確認" | "預計" | "待確認";
 export interface Place {
   id: string;

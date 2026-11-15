@@ -128,6 +128,7 @@ export function JourneyMap({
   );
   if (!data) return null;
   const color = {
+    taxi: "#bd934a",
     rail: "#8f82ab",
     walk: "#a38c71",
     bus: "#aa85ad",
@@ -239,7 +240,7 @@ export function JourneyMap({
             stroke={color[leg.kind]}
             strokeWidth={leg.kind === "boat" ? 18 : leg.kind === "walk" ? 5 : 7}
             strokeDasharray={
-              leg.kind === "walk"
+              (leg.kind === "walk" || leg.kind === "taxi")
                 ? "4 12"
                 : leg.kind === "flight"
                   ? "10 14"

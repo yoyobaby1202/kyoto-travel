@@ -378,7 +378,37 @@ export const places: Place[] = [
     "description": "在東山巷弄外觀賞五重塔，與八坂神社是不同景點。",
     "art": "temple",
     "duration": "依行程安排"
-  }
+  },
+{
+  "id": "shimogamo",
+  "name": "下鴨神社・糺之森",
+  "ja": "下鴨神社・糺の森",
+  "query": "下鴨神社 京都市左京区下鴨泉川町59",
+  "official": "https://www.shimogamo-jinja.or.jp/home",
+  "description": "森林參道與古老神社，安排悠閒參拜。",
+  "art": "temple",
+  "duration": "依行程安排"
+},
+{
+  "id": "masugata",
+  "name": "出町桝形商店街",
+  "ja": "出町桝形商店街",
+  "query": "出町桝形商店街 京都市上京区桝形通",
+  "official": "https://masugata.demachi.jp/",
+  "description": "京都在地商店與點心。",
+  "art": "town",
+  "duration": "依行程安排"
+},
+{
+  "id": "demachiza",
+  "name": "出町座のソコ",
+  "ja": "出町座のソコ",
+  "query": "出町座 京都市上京区三芳町133",
+  "official": "https://demachiza.com/about",
+  "description": "書店、電影院與咖啡空間。",
+  "art": "town",
+  "duration": "依行程安排"
+}
 ];
 export const restaurants: Restaurant[] = [
   {
@@ -468,6 +498,23 @@ export const restaurants: Restaurant[] = [
   "hours": "11:00–16:00；週末假日延至16:30，觀光季10:30–17:00，依店家公告",
   "lastOrder": "依店家當日安排",
   "alternative": "依現場用餐安排"
+},
+{
+  "id": "seiken",
+  "name": "生研會館",
+  "ja": "グリル生研会館",
+  "query": "グリル生研会館 京都市左京区下鴨森本町15",
+  "official": "https://www.instagram.com/grill_seikenkaikan/",
+  "description": "下鴨神社附近的日式洋食店，12/12午餐候選，尚未訂位。",
+  "art": "food",
+  "duration": "暫留60分鐘，候位另計",
+  "address": "京都市左京区下鴨森本町15 生産開発科学研究所ビル1F",
+  "phone": "075-721-2933",
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%B0%E3%83%AA%E3%83%AB%E7%94%9F%E7%A0%94%E4%BC%9A%E9%A4%A8%20%E4%BA%AC%E9%83%BD%E5%B8%82%E5%B7%A6%E4%BA%AC%E5%8C%BA%E4%B8%8B%E9%B4%A8%E6%A3%AE%E6%9C%AC%E7%94%BA15",
+  "dish": "漢堡排、炸蝦、蟹肉奶油可樂餅",
+  "hours": "午餐12:00–14:00；週四休息，依店家公告",
+  "lastOrder": "午餐13:30",
+  "alternative": "出町柳附近營業中的餐廳"
 }
 ];
 export const findPlace = (id?: string) => [...places, ...restaurants].find(p=>p.id===id);

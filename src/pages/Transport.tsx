@@ -27,7 +27,7 @@ export function Transport() {
       : day === 2
         ? ["sagano", "torokko"]
         : day === 3
-          ? ["kyoto-tofukuji", "tofukuji-demachi", "eizan", "eizan-back", "demachi-gojo", "kawaramachi-karasuma", "shijo-marutamachi", "marutamachi-kyoto"]
+          ? ["gojo-demachi", "eizan", "eizan-back"]
         : day === 4
           ? ["kyoto-shijo", "karasuma-kawaramachi", "hankyu-return", "shijo-kyoto"]
         : day === 5
@@ -87,7 +87,7 @@ export function Transport() {
         {day === 3 && (
           <p className="note">
             琉璃光院10:00開門，八瀨比叡山口站至寺院官方步行參考約12分鐘；
-            出町柳請搭「八瀬比叡山口行」。回程京阪選停靠清水五条的普通列車，出站後預留上坡步行與午餐時間。
+            06:00飯店出發建議計程車至清水寺附近；參觀後清水五条搭京阪普通往出町柳，轉叡山「八瀬比叡山口行」。回程叡山往出町柳，12:30生研會館午餐，再步行逛下鴨神社與商店街。18:30建議計程車前往空蟬庭，19:30已訂位；餐後計程車回飯店。
             <a href="https://rurikoin.komyoji.com/access/" target="_blank" rel="noreferrer">琉璃光院官方交通 ↗</a>
           </p>
         )}
@@ -110,7 +110,7 @@ export function Transport() {
                   mode={
                     e.mode === "train" || e.mode === "bus"
                       ? "transit"
-                      : "walking"
+                      : e.mode === "taxi" ? "driving" : "walking"
                   }
                 >
                   {e.title}

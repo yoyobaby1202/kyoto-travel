@@ -104,6 +104,17 @@ export function IllustratedJourneyMap({
         。圖示北朝上，分區縮尺，交通與步行資訊可展開下方站序卡。
       </desc>
       <image href={`${base}day-${day}.webp`} width="1200" height="1550" />
+      {day === 3 && (
+        <g fill="#493c35">
+          <rect x="345" y="405" width="245" height="78" rx="35" fill="#fff4df" stroke="#493c35" strokeWidth="2.5" />
+          <text x="467" y="434" textAnchor="middle" fontSize="25" fontWeight="600">生研會館</text>
+          <text x="467" y="465" textAnchor="middle" fontSize="25">午餐12:30–13:30</text>
+          <rect x="205" y="1460" width="920" height="48" rx="8" fill="#faf0e2" />
+          <text x="665" y="1492" textAnchor="middle" fontSize="28" fontWeight="600">
+            06:00飯店出發｜12:30生研會館｜19:30空蟬庭已訂位
+          </text>
+        </g>
+      )}
       {day === 1 && (
         <g aria-label="18:30檸檬牛舌，2人已訂位，餐後祇園散步再回飯店">
           <rect x="175" y="1457" width="620" height="48" rx="8" fill="#f9ebde" />

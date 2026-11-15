@@ -144,12 +144,12 @@ export const routes: Route[] = [
       "三宅八幡",
       "八瀬比叡山口"
     ],
-    "duration": "乘車約13分鐘；09:30–10:00含候車與步行",
+    "duration": "乘車約13分鐘；全段08:00–09:30含前段京阪、候車與步行",
     "official": "https://eizandensha.co.jp/guide/station/yase-hieizanguchi.html",
     "color": "#789981",
     "from": "出町柳駅 京都",
     "to": "八瀬比叡山口駅 京都",
-    "note": "搭乘停靠上述各站的普通列車；月台與車廂依現場看板。",
+    "note": "不需預約，可使用Suica等交通系IC卡。請搭八瀬比叡山口行。",
     "confirmedStops": true,
     "walk": "八瀨比叡山口站 → 琉璃光院，步行約12分鐘"
   },
@@ -174,7 +174,7 @@ export const routes: Route[] = [
     "to": "出町柳駅 京都",
     "note": "搭乘停靠上述各站的普通列車；月台與車廂依現場看板。",
     "confirmedStops": true,
-    "walk": "出町柳轉京阪電車，另外購票或刷卡出入閘"
+    "walk": "出町柳出站後步行前往生研會館，餐後至下鴨神社。"
   },
   {
     "id": "demachi-gojo",
@@ -359,5 +359,25 @@ export const routes: Route[] = [
     "confirmedStops": true,
     "walk": "京都站出站步行回hotel androoms Kyoto Shichijo",
     "note": "月台與乘車方向依現場電子看板。時間包含必要步行、候車與轉乘安排，不作為固定班次。"
+  },
+  {
+    "id": "gojo-demachi",
+    "name": "京阪本線・鴨東線・普通",
+    "direction": "往出町柳方向，終點出町柳下車",
+    "stations": [
+      "清水五条",
+      "祇園四条",
+      "三条",
+      "神宮丸太町",
+      "出町柳"
+    ],
+    "duration": "乘車約10–15分鐘；08:00–09:30包含下坡步行、叡山轉乘、候車及至琉璃光院步行",
+    "official": "https://www.keihan.co.jp/traffic/",
+    "color": "#789981",
+    "from": "清水五条駅 京都",
+    "to": "出町柳駅 京都",
+    "note": "搭乘停靠上述各站的普通列車；月台與車廂依現場看板。",
+    "confirmedStops": true,
+    "walk": "三年坂附近下坡步行至清水五条站；出町柳轉叡山電車"
   }
 ];

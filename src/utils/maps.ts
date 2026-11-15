@@ -1,6 +1,6 @@
 export function maps(
   query: string,
-  mode?: "walking" | "transit",
+  mode?: "walking" | "transit" | "driving",
   origin?: string,
 ) {
   const p = new URLSearchParams({ api: "1" });

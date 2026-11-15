@@ -377,48 +377,80 @@ export const days: Day[] = [
     "id": 3,
     "date": "2026-12-12",
     "weekday": "六",
-    "title": "琉璃光院・清水寺・東山散策",
-    "ja": "瑠璃光院と、東山さんぽ。",
-    "subtitle": "八瀨庭園倒影，走向清水寺與京都小巷",
+    "title": "清水寺・琉璃光院・下鴨散策",
+    "ja": "朝の清水、糺の森へ。",
+    "subtitle": "清晨清水寺、八瀨庭園與出町柳的悠閒午後",
     "art": "temple",
     "color": "orange",
     "events": [
       {
-        "id": "ruri-breakfast",
-        "start": "08:00",
-        "end": "08:30",
-        "title": "飯店早餐・出發",
+        "id": "relaxed-breakfast",
+        "start": "05:30",
+        "end": "06:00",
+        "title": "起床・超商早餐・準備出門",
         "mode": "food",
         "status": "預計",
         "fixed": false,
-        "place": "hotel"
+        "note": "早餐可前一晚先買好。"
       },
       {
-        "id": "ruri-jr",
-        "start": "08:30",
-        "end": "09:30",
-        "title": "JR 奈良線 → 東福寺・京阪 → 出町柳",
-        "mode": "train",
+        "id": "relaxed-taxi-kiyomizu",
+        "start": "06:00",
+        "end": "06:30",
+        "title": "飯店 → 清水寺附近",
+        "mode": "taxi",
         "status": "預計",
         "fixed": false,
-        "place": "demachi",
-        "route": "kyoto-tofukuji",
-        "note": "含飯店步行、候車與東福寺轉乘，搭JR奈良線普通至東福寺，轉京阪普通往出町柳。",
-        "connections": [
-          "tofukuji-demachi"
-        ]
+        "place": "kiyomizu",
+        "note": "計程車至清水寺附近可下車處，再步行入寺；本日06:00從飯店出發。"
       },
       {
-        "id": "ruri-eizan",
-        "start": "09:30",
-        "end": "10:00",
-        "title": "叡山本線 → 八瀨比叡山口・步行",
+        "id": "ruri-kiyomizu",
+        "start": "06:30",
+        "end": "07:30",
+        "title": "清水寺・清晨參觀",
+        "mode": "visit",
+        "status": "預計",
+        "fixed": false,
+        "place": "kiyomizu",
+        "note": "慢慢拍照與欣賞清水舞台。"
+      },
+      {
+        "id": "relaxed-slopes",
+        "start": "07:30",
+        "end": "08:00",
+        "title": "三年坂・二年坂清晨散步",
+        "mode": "walk",
+        "status": "預計",
+        "fixed": false,
+        "place": "sannenzaka",
+        "note": "以街景拍照為主，多數商店尚未開門。"
+      },
+      {
+        "id": "relaxed-to-yase",
+        "start": "08:00",
+        "end": "09:30",
+        "title": "清水五条 → 出町柳 → 八瀨・琉璃光院",
         "mode": "train",
         "status": "預計",
         "fixed": false,
         "place": "rurikoin",
-        "route": "eizan",
-        "note": "搭八瀬比叡山口行，出站步行約12分鐘至琉璃光院。"
+        "note": "下坡步行至清水五条，搭京阪普通往出町柳，轉叡山本線八瀬比叡山口行，再步行約12分鐘至琉璃光院。含步行、候車與轉乘。",
+        "route": "gojo-demachi",
+        "connections": [
+          "eizan"
+        ]
+      },
+      {
+        "id": "relaxed-ruri-queue",
+        "start": "09:30",
+        "end": "10:00",
+        "title": "琉璃光院・排隊與入場緩衝",
+        "mode": "visit",
+        "status": "預計",
+        "fixed": false,
+        "place": "rurikoin",
+        "note": "10:00開門後依現場排隊入場。"
       },
       {
         "id": "ruri-visit",
@@ -427,101 +459,110 @@ export const days: Day[] = [
         "title": "琉璃光院・庭園與書院倒影",
         "mode": "visit",
         "status": "預計",
-        "fixed": true,
+        "fixed": false,
         "place": "rurikoin",
         "note": "官方秋季開放至2026/12/13，10:00開門；12/12依官方公告不需預約。"
       },
       {
-        "id": "ruri-return-eizan",
+        "id": "relaxed-to-seiken",
         "start": "11:30",
         "end": "12:30",
-        "title": "叡山返回出町柳・京阪 → 清水五条",
+        "title": "八瀨 → 出町柳・前往生研會館",
         "mode": "train",
         "status": "預計",
         "fixed": false,
-        "place": "kiyomizu-gojo",
-        "route": "eizan-back",
-        "note": "含步行至八瀨比叡山口站、候車與出町柳轉乘，京阪請搭停靠清水五条的普通列車。",
-        "connections": [
-          "demachi-gojo"
-        ]
+        "place": "seiken",
+        "note": "步行至八瀨比叡山口，搭叡山本線往出町柳，再步行至生研會館。含候車與步行。",
+        "route": "eizan-back"
       },
       {
-        "id": "ruri-lunch",
+        "id": "relaxed-seiken-lunch",
         "start": "12:30",
         "end": "13:30",
-        "title": "清水寺周邊午餐・前往寺院",
+        "title": "生研會館・午餐",
         "mode": "food",
         "status": "預計",
         "fixed": false,
+        "note": "每人預算約¥2,500；用餐暫留60分鐘，候位另計。午餐最後點餐13:30，上午延誤時先確認能否入店。",
         "meal": true,
-        "note": "此60分鐘含清水五条站至寺院周邊約25–30分鐘上坡步行，建議選快速用餐並保留13:30參觀時間。"
+        "restaurant": "seiken"
       },
       {
-        "id": "ruri-kiyomizu",
+        "id": "relaxed-to-shimogamo",
         "start": "13:30",
-        "end": "15:00",
-        "title": "清水寺參觀",
+        "end": "14:00",
+        "title": "餐後散步・前往下鴨神社",
+        "mode": "walk",
+        "status": "預計",
+        "fixed": false,
+        "place": "shimogamo",
+        "note": "保留餐後步行與休息緩衝。"
+      },
+      {
+        "id": "relaxed-shimogamo",
+        "start": "14:00",
+        "end": "15:30",
+        "title": "下鴨神社・糺之森",
         "mode": "visit",
         "status": "預計",
-        "fixed": true,
-        "place": "kiyomizu"
+        "fixed": false,
+        "place": "shimogamo",
+        "note": "慢慢參拜與森林散步；河合神社視體力順遊，不必全部走完。"
       },
       {
-        "id": "ruri-sannen",
-        "start": "15:00",
+        "id": "relaxed-river",
+        "start": "15:30",
         "end": "16:00",
-        "title": "三年坂・特色商店",
+        "title": "出町柳・鴨川河邊散步",
         "mode": "walk",
         "status": "預計",
         "fixed": false,
-        "place": "sannenzaka"
+        "place": "demachi",
+        "note": "天冷或下雨可直接前往商店街。"
       },
       {
-        "id": "ruri-ninen",
+        "id": "relaxed-masugata",
         "start": "16:00",
-        "end": "16:30",
-        "title": "二年坂散步",
-        "mode": "walk",
-        "status": "預計",
-        "fixed": false,
-        "place": "ninenzaka"
-      },
-      {
-        "id": "ruri-yasaka-tower",
-        "start": "16:30",
         "end": "17:00",
-        "title": "八坂塔・法觀寺周邊拍照",
+        "title": "出町桝形商店街",
         "mode": "walk",
         "status": "預計",
         "fixed": false,
-        "place": "yasaka-tower"
+        "place": "masugata",
+        "note": "小店、點心與伴手禮，各店營業時間不同。"
       },
       {
-        "id": "ruri-gion",
+        "id": "relaxed-coffee",
         "start": "17:00",
         "end": "18:00",
-        "title": "祇園・四條河原町散步",
+        "title": "咖啡休息・出町座のソコ",
+        "mode": "food",
+        "status": "預計",
+        "fixed": false,
+        "place": "demachiza",
+        "note": "出町座のソコ列為候選，保留一小時坐下休息，依當日營業安排。"
+      },
+      {
+        "id": "relaxed-free",
+        "start": "18:00",
+        "end": "18:30",
+        "title": "自由活動・交通緩衝",
         "mode": "walk",
         "status": "預計",
         "fixed": false,
-        "place": "gion",
-        "note": "由祇園步行穿過鴨川前往四條河原町。"
+        "place": "masugata",
+        "note": "不再增加景點。"
       },
       {
         "id": "3-to-karasemitei",
-        "start": "18:00",
+        "start": "18:30",
         "end": "19:00",
-        "title": "河原町 → 烏丸・丸太町・空蟬庭",
-        "mode": "train",
+        "title": "計程車前往空蟬庭",
+        "mode": "taxi",
         "status": "預計",
         "fixed": false,
         "place": "karasemitei",
-        "route": "kawaramachi-karasuma",
-        "connections": [
-          "shijo-marutamachi"
-        ],
-        "note": "阪急京都河原町往大阪梅田方向至烏丸，步行轉地下鐵四条往國際會館方向至丸太町，再往西步行約20分鐘到店；含候車及轉乘。"
+        "note": "建議計程車，減少晚間步行；預留候車與市區交通時間。"
       },
       {
         "id": "3-karasemitei-checkin",
@@ -550,14 +591,13 @@ export const days: Day[] = [
       {
         "id": "3-hotel-after-karasemitei",
         "start": "20:30",
-        "end": "21:30",
-        "title": "丸太町 → 京都・回飯店休息",
-        "mode": "train",
+        "end": "21:00",
+        "title": "餐後計程車返回飯店",
+        "mode": "taxi",
         "status": "預計",
         "fixed": false,
         "place": "hotel",
-        "route": "marutamachi-kyoto",
-        "note": "步行回地下鐵丸太町，搭往竹田方向的烏丸線至京都；含步行、候車及飯店步行預留60分鐘。"
+        "note": "20:30後依實際用餐結束時間離店；建議計程車回飯店休息。"
       }
     ]
   },
@@ -802,3 +842,4 @@ export const days: Day[] = [
   }
 ];
 export const tourStops = ["ine","ineboat","inepark","view","chion","kaisen","sand"];
+

@@ -77,18 +77,18 @@ export const routes: Route[] = [
   },
   {
     "id": "haruka-back",
-    "name": "HARUKA 33號・回程規劃",
+    "name": "HARUKA 33號・回程已訂位",
     "color": "#6499a7",
-    "direction": "関西空港方面，班次名稱及時間待核對",
+    "direction": "往関西空港方向",
     "stations": [
       "京都",
       "関西空港"
     ],
-    "duration": "使用者目標14:00–15:20，待官方核對",
+    "duration": "14:00京都 → 15:20関西空港",
     "from": "京都駅",
     "to": "関西空港駅",
     "official": "https://www.westjr.co.jp/global/tc/ticket/haruka/",
-    "note": "僅顯示起訖，不計站數。請確認12/14時刻表及指定席，不代表已訂票；保留足夠國際線報到時間。",
+    "note": "已訂位・8號車・10C／10D。僅顯示起訖，不計站數；月台依現場看板，保留足夠國際線報到時間。",
     "confirmedStops": false
   },
   {

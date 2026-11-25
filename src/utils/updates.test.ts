@@ -7,6 +7,12 @@ test("晚餐日期分店、時間與原有固定轉乘正確", () => {
   const dinner = (day: number) =>
     days[day - 1].events.find((e) => e.meal && e.title.includes("晚餐"))!;
   assert.equal(dinner(1).restaurant, "lemon");
+  const haruka = days[4].events.find(e => e.id === "5-7")!;
+  assert.equal(haruka.start, "14:00");
+  assert.equal(haruka.end, "15:20");
+  assert.equal(haruka.reserved, true);
+  assert.equal(haruka.status, "已確認");
+  assert.match(haruka.note!, /8號車.*10C.*10D/);
   assert.equal(dinner(1).start, "18:30");
   assert.equal(dinner(1).end, "20:00");
   assert.equal(dinner(1).status, "已確認");

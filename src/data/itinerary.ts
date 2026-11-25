@@ -788,7 +788,7 @@ export const days: Day[] = [
         "title": "京都站・HARUKA 乘車準備",
         "mode": "walk",
         "place": "kyoto",
-        "note": "月台依當日電子看板；先完成購票與指定席。",
+        "note": "備妥票券，確認8號車乘車位置；月台依當日電子看板。",
         "status": "預計",
         "fixed": false
       },
@@ -799,10 +799,11 @@ export const days: Day[] = [
         "title": "HARUKA 33號 → 關西機場",
         "mode": "train",
         "place": "airport",
-        "note": "班次名稱與時刻待查，尚未訂票。",
+        "note": "已訂位・8號車・10C／10D。14:00京都出發，15:20抵達關西機場（日本時間）。",
         "route": "haruka-back",
-        "status": "待確認",
-        "fixed": true
+        "status": "已確認",
+        "fixed": true,
+        "reserved": true
       },
       {
         "id": "5-8",

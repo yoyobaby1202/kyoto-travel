@@ -43,6 +43,7 @@ export function Transport() {
       <TrainDayPicker selected={day} onSelect={setDay} />
       <section className="daily-route-map paper-card">
         <h2>{selected.title}</h2>
+        {day === 5 && <p className="note">HARUKA 33號・已訂位<br />14:00–15:20｜8號車・10C／10D</p>}
         <button
           className="route-image-button"
           onClick={() => {
